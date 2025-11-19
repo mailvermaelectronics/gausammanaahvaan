@@ -192,7 +192,6 @@
             margin-top: 20px;
             transition: background-color 0.2s ease-in-out;
             animation: pulse 1.0s infinite ease-in-out; 
-            white-space: nowrap; /* बटन के टेक्स्ट को एक ही लाइन में रखने के लिए */
         }
         
         .website-button:hover {
@@ -212,12 +211,22 @@
         .website-button .desktop-text {
             display: none;
         }
+        /* Mobile: <br> को दिखाने के लिए */
+        .website-button .mobile-break {
+            display: block; 
+            content: "";
+        }
 
         /* --- Media Query for DESKTOP (768px and up) --- */
         @media (min-width: 768px) {
             .app-container {
                 max-width: 500px;
                 padding: 40px 30px;
+            }
+            
+            /* FIX: Ensure the entire button content stays on one line on desktop */
+            .website-button {
+                white-space: nowrap;
             }
 
             /* Desktop: Mobile text छिप जाएगा, Desktop text (डैश के साथ) दिखेगा */
@@ -226,6 +235,10 @@
             }
             .website-button .desktop-text {
                 display: inline;
+            }
+            /* FIX: Desktop पर <br> को छिपाने के लिए */
+            .website-button .mobile-break {
+                display: none;
             }
         }
         /* --- END OF FIX --- */
@@ -320,6 +333,7 @@
     <a href="https://www.gausamman.cloud/" target="_blank" class="website-button">
         <span class="mobile-text">🌐 Visit Official Website</span>
         <span class="desktop-text">🌐 Visit Official Website - </span>
+        <br class="mobile-break"> 
         <span class="url-text">www.gausamman.cloud</span>
     </a>
     
