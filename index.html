@@ -4,13 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>गौ सम्मान आह्वान अभियान</title>
-    <!-- Font Awesome (v6.5.2) Icons के लिए CDN: यह प्रोफेशनल आइकन्स का उपयोग करने देता है -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     
     <style>
         /* --- Animation Keyframes --- */
         
-        /* 1. Website Button Zoom/Pulse Animation */
+        /* 1. Website Button Zoom/Pulse Animation (KEPT FOR REFERENCE, NOT APPLIED NOW) */
         @keyframes pulse {
             0% { transform: scale(1); box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); }
             50% { transform: scale(1.08); box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5); } 
@@ -40,13 +39,23 @@
         /* Styling for the Main Content Card (Mobile View) */
         .app-container {
             width: 100%;
-            max-width: 360px; /* Max mobile width */
+            max-width: 360px; /* Max mobile width (360px) */
             background-color: white;
             padding: 30px 20px;
             border-radius: 20px;
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
             text-align: center;
         }
+        
+        /* --- Desktop/Laptop Fix: Increase max-width for larger screens --- */
+        @media (min-width: 768px) {
+            .app-container {
+                max-width: 500px; /* Increased max width for better desktop/laptop look */
+                padding: 40px 30px;
+            }
+        }
+        /* --- END OF DESKTOP/LAPTOP FIX --- */
+
 
         /* --- Header and Title Styling (Modified for Side Logos) --- */
         .logo-container {
@@ -60,7 +69,6 @@
         .main-logo {
             width: 80px;
             height: 80px;
-            /* margin: 0 auto 10px; <-- No longer needed due to flex */
             display: flex;
             justify-content: center;
             align-items: center;
@@ -90,7 +98,6 @@
         .side-logo-right img {
             width: 100%;
             height: 100%;
-            /* object-fit: cover; Use cover to fill the circle */
             object-fit: contain; /* Using 'contain' for better fit, especially for placeholder text */
             border-radius: 50%; /* Make them circular */
             border: 2px solid #f9d97a; /* Matching border, but thinner */
@@ -160,9 +167,13 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 20px;
             box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
             transition: background-color 0.2s;
+        }
+        
+        /* Font Size for Icons (Increased for full circle fit) */
+        .icon-wrapper i {
+            font-size: 30px; /* INCREASED from 20px to 30px for a fuller look */
         }
         
         /* Specific Icon Colors for Font Awesome */
@@ -193,7 +204,7 @@
             padding: 5px;
         }
         
-        /* Official Website Button (Stronger and Faster Pulse animation applied) */
+        /* Official Website Button */
         .website-button {
             display: inline-block;
             background-color: #a80000;
@@ -207,8 +218,10 @@
             margin-top: 20px;
             transition: background-color 0.2s ease-in-out;
             
-            /* --- Animation Applied (Stronger and Faster Pulse) --- */
-            animation: pulse 1.0s infinite ease-in-out; /* Faster animation */
+            /* --- FIX: Animation Removed to stop 'floating' --- */
+            /* animation: pulse 1.0s infinite ease-in-out; */
+            transform: scale(1); /* Ensure it's not scaled up by residual animation properties */
+            /* --- END OF FIX --- */
         }
         
         .website-button:hover {
@@ -226,16 +239,13 @@
 <div class="app-container">
     
     <div class="logo-container">
-        <!-- Left Side Logo -->
         <div class="side-logo-left">
-            <!-- Updated URL with fallback placeholder -->
             <img 
                 src="res/cow1.png" 
                 onerror="this.onerror=null;this.src='https://placehold.co/60x60/f9d97a/a80000?text=Cow+Logo+1'"
                 alt="गौ सम्मान आह्वान अभियान">
         </div>
         
-        <!-- Main Logo -->
         <div class="main-logo">
             <img 
                 src="res/logo.png" 
@@ -243,9 +253,7 @@
                 alt="गौ सम्मान आह्वान अभियान Logo">
         </div>
 
-        <!-- Right Side Logo -->
         <div class="side-logo-right">
-            <!-- Updated URL with fallback placeholder -->
             <img 
                 src="res/cow2.png"
                 onerror="this.onerror=null;this.src='https://placehold.co/60x60/f9d97a/a80000?text=Cow+Logo+2'"
@@ -253,20 +261,16 @@
         </div>
     </div>
     
-    <!-- Marquee Text - Content duplicated for seamless loop (Now 2 copies) -->
     <div class="marquee-container">
-        <!-- Text is repeated 2 times, and spacing is controlled by CSS margin-right -->
         <div class="marquee-text">
             <span>गौ सम्मान आह्वान अभियान 🚩 🐄 🕉️</span>
             <span class="copy-2">गौ सम्मान आह्वान अभियान 🚩 🐄 🕉️</span>
         </div>
     </div>
     
-    <!-- Original headings are hidden by CSS but kept for reference if needed -->
     <h1 class="header-text">गौ सम्मान</h1>
     <h2 class="subheader-text">आह्वान अभियान</h2>
     
-    <!-- Social Media Icons (Clickable Links with Font Awesome Icons) -->
     <div class="social-icons">
         <a href="mailto:gausamman@gmail.com" target="_blank" aria-label="Apple App Store Link">
             <div class="icon-wrapper icon-apple">
@@ -315,27 +319,16 @@
         </a>
     </div>
     
-    <!-- Visit Official Website Button (Stronger and Faster Pulse animation applied) -->
     <a href="https://www.gausamman.cloud/" target="_blank" class="website-button">
-       🌐 Visit Official Website - <span>www.gausamman.cloud</span>
+        🌐 Visit Official Website - <span>www.gausamman.cloud</span>
     </a>
     
 </div>
 
 <script>
-    // To fix potential issues with inline-block and white-space,
-    // we use a flexible approach here.
+    // Note: The JavaScript remains the same and is not essential for the layout fix.
     const marqueeText = document.querySelector('.marquee-text');
-    
-    // Split the text into two spans to control spacing accurately.
-    // We already have the structure in HTML, so we just need to ensure the spans are inline.
-    
-    // For maximum compatibility and a smooth loop, we can rely on the CSS changes made.
-    
-    // If the loop still appears jerky, we can try to dynamically calculate the time based on width
-    // or use a different speed. However, the 2-copy/-50% margin-controlled method is the most reliable CSS technique.
 </script>
 
 </body>
 </html>
-
