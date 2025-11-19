@@ -9,18 +9,14 @@
     <style>
         /* --- Animation Keyframes --- */
         
-        /* 1. Website Button Zoom/Pulse Animation (KEPT FOR REFERENCE, NOT APPLIED NOW) */
         @keyframes pulse {
             0% { transform: scale(1); box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); }
             50% { transform: scale(1.08); box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5); } 
             100% { transform: scale(1); box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); }
         }
 
-        /* 2. Marquee Animation for Sliding Text (Seamless Loop Fix - Two Copies) */
         @keyframes marquee {
-            /* Text starts at its initial position */
             0% { transform: translateX(0%); } 
-            /* Moves exactly one copy's width, ensuring a seamless loop */
             100% { transform: translateX(-50%); } 
         }
 
@@ -36,7 +32,6 @@
             padding: 20px;
         }
 
-        /* Styling for the Main Content Card (Mobile View) */
         .app-container {
             width: 100%;
             max-width: 360px; /* Max mobile width (360px) */
@@ -47,23 +42,13 @@
             text-align: center;
         }
         
-        /* --- Desktop/Laptop Fix: Increase max-width for larger screens --- */
-        @media (min-width: 768px) {
-            .app-container {
-                max-width: 500px; /* Increased max width for better desktop/laptop look */
-                padding: 40px 30px;
-            }
-        }
-        /* --- END OF DESKTOP/LAPTOP FIX --- */
-
-
-        /* --- Header and Title Styling (Modified for Side Logos) --- */
+        /* --- Header and Title Styling --- */
         .logo-container {
             margin-bottom: 20px;
-            display: flex; /* Use flexbox for alignment */
-            justify-content: center; /* Center the logos */
-            align-items: center; /* Vertically align them */
-            gap: 50px; /* दूरी और बढ़ाई गई (Increased space between logos further) */
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            gap: 50px; 
         }
 
         .main-logo {
@@ -72,7 +57,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            flex-shrink: 0; /* Prevent main logo from shrinking */
+            flex-shrink: 0;
         }
         
         .main-logo img {
@@ -83,10 +68,9 @@
             border: 3px solid #f9d97a;
         }
 
-        /* New styles for side logos */
         .side-logo-left,
         .side-logo-right {
-            width: 60px; /* Smaller than main logo (80px) */
+            width: 60px;
             height: 60px;
             display: flex;
             justify-content: center;
@@ -98,20 +82,19 @@
         .side-logo-right img {
             width: 100%;
             height: 100%;
-            object-fit: contain; /* Using 'contain' for better fit, especially for placeholder text */
-            border-radius: 50%; /* Make them circular */
-            border: 2px solid #f9d97a; /* Matching border, but thinner */
-            background-color: #ffffff; /* White background in case image has transparency */
+            object-fit: contain;
+            border-radius: 50%;
+            border: 2px solid #f9d97a;
+            background-color: #ffffff;
         }
         
-        /* New Container for Sliding Text */
         .marquee-container {
             overflow: hidden; 
             white-space: nowrap; 
             width: 100%; 
             margin-bottom: 40px;
             text-align: left; 
-            box-sizing: border-box; /* Ensure padding doesn't break width calculation */
+            box-sizing: border-box;
         }
         
         .marquee-text {
@@ -120,18 +103,15 @@
             font-size: 24px; 
             font-weight: 900;
             width: max-content; 
-            /* SPEED ADJUSTED to 4s for much faster slide */
             animation: marquee 4s linear infinite; 
-            
-            /* Using CSS margin to create space between copies for better loop reliability */
-            margin-right: 150px; /* Increased separation between the two copies */
+            margin-right: 150px;
         }
         
         .header-text, .subheader-text {
              display: none; 
         }
 
-        /* --- Social Icons Grid Layout and Interaction --- */
+        /* --- Social Icons Grid Layout --- */
         .social-icons {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -139,7 +119,6 @@
             margin-bottom: 50px;
         }
         
-        /* Styling for the Clickable Link Wrappers (a tag) */
         .social-icons a {
             text-decoration: none;
             display: block;
@@ -147,13 +126,11 @@
             justify-self: center; 
         }
 
-        /* Hover/Tap Effect for Icons */
         .social-icons a:hover,
         .social-icons a:focus {
             transform: scale(1.1);
             outline: none;
         }
-        /* Mobile touch tap feedback */
         .social-icons a:active {
             transform: scale(0.95);
         }
@@ -171,12 +148,10 @@
             transition: background-color 0.2s;
         }
         
-        /* Font Size for Icons (Increased for full circle fit) */
         .icon-wrapper i {
-            font-size: 30px; /* INCREASED from 20px to 30px for a fuller look */
+            font-size: 30px;
         }
         
-        /* Specific Icon Colors for Font Awesome */
         .icon-apple i { color: #888; }
         .icon-whatsapp i { color: #25D366; }
         .icon-youtube i { color: #FF0000; }
@@ -186,7 +161,6 @@
         .icon-instagram i { color: #C13584; }
         .icon-facebook i { color: #1877F2; }
         
-        /* Specific Styling for Connect with Us (Central Button) */
         .connect-us {
             background-color: #a80000;
             color: white;
@@ -204,7 +178,7 @@
             padding: 5px;
         }
         
-        /* Official Website Button */
+        /* Official Website Button (Animation Re-applied) */
         .website-button {
             display: inline-block;
             background-color: #a80000;
@@ -217,20 +191,44 @@
             font-weight: bold;
             margin-top: 20px;
             transition: background-color 0.2s ease-in-out;
-            
-            /* --- FIX: Animation Removed to stop 'floating' --- */
-            /* animation: pulse 1.0s infinite ease-in-out; */
-            transform: scale(1); /* Ensure it's not scaled up by residual animation properties */
-            /* --- END OF FIX --- */
+            animation: pulse 1.0s infinite ease-in-out; 
+            white-space: nowrap; /* बटन के टेक्स्ट को एक ही लाइन में रखने के लिए */
         }
         
         .website-button:hover {
             background-color: #880000;
         }
         
-        .website-button span {
+        /* URL टेक्स्ट का कलर */
+        .website-button .url-text {
             color: #ffccb3;
         }
+        
+        /* --- Default (Mobile/Small Screen) Setting --- */
+        /* Mobile: Mobile text दिखेगा, Desktop text छिप जाएगा */
+        .website-button .mobile-text { 
+            display: inline; 
+        }
+        .website-button .desktop-text {
+            display: none;
+        }
+
+        /* --- Media Query for DESKTOP (768px and up) --- */
+        @media (min-width: 768px) {
+            .app-container {
+                max-width: 500px;
+                padding: 40px 30px;
+            }
+
+            /* Desktop: Mobile text छिप जाएगा, Desktop text (डैश के साथ) दिखेगा */
+            .website-button .mobile-text { 
+                display: none; 
+            }
+            .website-button .desktop-text {
+                display: inline;
+            }
+        }
+        /* --- END OF FIX --- */
         
     </style>
 </head>
@@ -320,7 +318,9 @@
     </div>
     
     <a href="https://www.gausamman.cloud/" target="_blank" class="website-button">
-        🌐 Visit Official Website  <span>www.gausamman.cloud</span>
+        <span class="mobile-text">🌐 Visit Official Website</span>
+        <span class="desktop-text">🌐 Visit Official Website - </span>
+        <span class="url-text">www.gausamman.cloud</span>
     </a>
     
 </div>
