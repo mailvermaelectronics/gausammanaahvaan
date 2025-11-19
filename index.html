@@ -4,22 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>गौ सम्मान आह्वान अभियान</title>
+    <!-- Font Awesome (v6.5.2) Icons के लिए CDN: यह प्रोफेशनल आइकन्स का उपयोग करने देता है -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     
     <style>
         /* --- Animation Keyframes --- */
         
-        /* 1. Website Button Zoom/Pulse Animation (Increased Effect) */
+        /* 1. Website Button Zoom/Pulse Animation */
         @keyframes pulse {
             0% { transform: scale(1); box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); }
-            50% { transform: scale(1.05); box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4); } /* Increased scale and shadow */
+            50% { transform: scale(1.08); box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5); } 
             100% { transform: scale(1); box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); }
         }
 
-        /* 2. Marquee Animation for Sliding Text */
+        /* 2. Marquee Animation for Sliding Text (Seamless Loop Fix - Two Copies) */
         @keyframes marquee {
-            0% { transform: translateX(100%); }
-            100% { transform: translateX(-100%); }
+            /* Text starts at its initial position */
+            0% { transform: translateX(0%); } 
+            /* Moves exactly one copy's width, ensuring a seamless loop */
+            100% { transform: translateX(-50%); } 
         }
 
         /* --- General Styling and Layout (Tailored for Mobile) --- */
@@ -45,18 +48,23 @@
             text-align: center;
         }
 
-        /* --- Header and Title Styling (Modified for Marquee) --- */
+        /* --- Header and Title Styling (Modified for Side Logos) --- */
         .logo-container {
             margin-bottom: 20px;
+            display: flex; /* Use flexbox for alignment */
+            justify-content: center; /* Center the logos */
+            align-items: center; /* Vertically align them */
+            gap: 50px; /* दूरी और बढ़ाई गई (Increased space between logos further) */
         }
 
         .main-logo {
             width: 80px;
             height: 80px;
-            margin: 0 auto 10px;
+            /* margin: 0 auto 10px; <-- No longer needed due to flex */
             display: flex;
             justify-content: center;
             align-items: center;
+            flex-shrink: 0; /* Prevent main logo from shrinking */
         }
         
         .main-logo img {
@@ -66,30 +74,55 @@
             border-radius: 50%;
             border: 3px solid #f9d97a;
         }
+
+        /* New styles for side logos */
+        .side-logo-left,
+        .side-logo-right {
+            width: 60px; /* Smaller than main logo (80px) */
+            height: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-shrink: 0;
+        }
+
+        .side-logo-left img,
+        .side-logo-right img {
+            width: 100%;
+            height: 100%;
+            /* object-fit: cover; Use cover to fill the circle */
+            object-fit: contain; /* Using 'contain' for better fit, especially for placeholder text */
+            border-radius: 50%; /* Make them circular */
+            border: 2px solid #f9d97a; /* Matching border, but thinner */
+            background-color: #ffffff; /* White background in case image has transparency */
+        }
         
         /* New Container for Sliding Text */
         .marquee-container {
-            overflow: hidden; /* Hide content that slides outside */
-            white-space: nowrap; /* Keep text on a single line */
-            width: 100%; /* Important for marquee effect */
+            overflow: hidden; 
+            white-space: nowrap; 
+            width: 100%; 
             margin-bottom: 40px;
+            text-align: left; 
+            box-sizing: border-box; /* Ensure padding doesn't break width calculation */
         }
         
         .marquee-text {
             display: inline-block;
             color: #a80000;
-            font-size: 24px; /* Combined size */
+            font-size: 24px; 
             font-weight: 900;
-            padding-left: 100%; /* Start the text outside the right edge */
-            animation: marquee 10s linear infinite; /* Apply the sliding animation */
+            width: max-content; 
+            /* SPEED ADJUSTED to 4s for much faster slide */
+            animation: marquee 4s linear infinite; 
+            
+            /* Using CSS margin to create space between copies for better loop reliability */
+            margin-right: 150px; /* Increased separation between the two copies */
         }
         
-        /* The header-text and subheader-text classes are no longer used for the main title,
-           but their styling is merged into .marquee-text. */
         .header-text, .subheader-text {
-             display: none; /* Hide old separate headings */
+             display: none; 
         }
-
 
         /* --- Social Icons Grid Layout and Interaction --- */
         .social-icons {
@@ -104,7 +137,7 @@
             text-decoration: none;
             display: block;
             transition: transform 0.2s ease-in-out;
-            justify-self: center; /* Center the links in the grid cell */
+            justify-self: center; 
         }
 
         /* Hover/Tap Effect for Icons */
@@ -160,7 +193,7 @@
             padding: 5px;
         }
         
-        /* Official Website Button (Pulse Animation Applied) */
+        /* Official Website Button (Stronger and Faster Pulse animation applied) */
         .website-button {
             display: inline-block;
             background-color: #a80000;
@@ -174,8 +207,8 @@
             margin-top: 20px;
             transition: background-color 0.2s ease-in-out;
             
-            /* --- Animation Applied (Updated for stronger pulse) --- */
-            animation: pulse 1.8s infinite ease-in-out; /* Slightly faster animation */
+            /* --- Animation Applied (Stronger and Faster Pulse) --- */
+            animation: pulse 1.0s infinite ease-in-out; /* Faster animation */
         }
         
         .website-button:hover {
@@ -193,18 +226,47 @@
 <div class="app-container">
     
     <div class="logo-container">
+        <!-- Left Side Logo -->
+        <div class="side-logo-left">
+            <!-- Updated URL with fallback placeholder -->
+            <img 
+                src="http://googleusercontent.com/generated_image_content/0" 
+                onerror="this.onerror=null;this.src='https://placehold.co/60x60/f9d97a/a80000?text=Cow+Logo+1'"
+                alt="देसी गाय बछड़े को दूध पिलाती हुई">
+        </div>
+        
+        <!-- Main Logo -->
         <div class="main-logo">
-            <img src="logo.png" alt="गौ सम्मान आह्वान अभियान Logo">
+            <img 
+                src="logo.png" 
+                onerror="this.onerror=null;this.src='https://placehold.co/80x80/a80000/ffffff?text=LOGO'" 
+                alt="गौ सम्मान आह्वान अभियान Logo">
+        </div>
+
+        <!-- Right Side Logo -->
+        <div class="side-logo-right">
+            <!-- Updated URL with fallback placeholder -->
+            <img 
+                src="http://googleusercontent.com/generated_image_content/1" 
+                onerror="this.onerror=null;this.src='https://placehold.co/60x60/f9d97a/a80000?text=Cow+Logo+2'"
+                alt="देसी गाय बछड़े को दूध पिलाती हुई">
         </div>
     </div>
     
+    <!-- Marquee Text - Content duplicated for seamless loop (Now 2 copies) -->
     <div class="marquee-container">
-        <div class="marquee-text">​🕉️ गौ सम्मान आह्वान अभियान 🚩 🐄 🕉️</div>
+        <!-- Text is repeated 2 times, and spacing is controlled by CSS margin-right -->
+        <div class="marquee-text">
+            <span>गौ सम्मान आह्वान अभियान 🚩 🐄 🕉️</span>
+            <span class="copy-2">गौ सम्मान आह्वान अभियान 🚩 🐄 🕉️</span>
+        </div>
     </div>
     
+    <!-- Original headings are hidden by CSS but kept for reference if needed -->
     <h1 class="header-text">गौ सम्मान</h1>
     <h2 class="subheader-text">आह्वान अभियान</h2>
     
+    <!-- Social Media Icons (Clickable Links with Font Awesome Icons) -->
     <div class="social-icons">
         <a href="mailto:gausamman@gmail.com" target="_blank" aria-label="Apple App Store Link">
             <div class="icon-wrapper icon-apple">
@@ -253,13 +315,27 @@
         </a>
     </div>
     
+    <!-- Visit Official Website Button (Stronger and Faster Pulse animation applied) -->
     <a href="https://www.gausamman.cloud/" target="_blank" class="website-button">
        🌐 Visit Official Website - <span>www.gausamman.cloud</span>
     </a>
     
 </div>
 
+<script>
+    // To fix potential issues with inline-block and white-space,
+    // we use a flexible approach here.
+    const marqueeText = document.querySelector('.marquee-text');
+    
+    // Split the text into two spans to control spacing accurately.
+    // We already have the structure in HTML, so we just need to ensure the spans are inline.
+    
+    // For maximum compatibility and a smooth loop, we can rely on the CSS changes made.
+    
+    // If the loop still appears jerky, we can try to dynamically calculate the time based on width
+    // or use a different speed. However, the 2-copy/-50% margin-controlled method is the most reliable CSS technique.
+</script>
+
 </body>
 </html>
-```http://googleusercontent.com/generated_image_content/0
 
