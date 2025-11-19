@@ -7,6 +7,21 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     
     <style>
+        /* --- Animation Keyframes --- */
+        
+        /* 1. Website Button Zoom/Pulse Animation (Increased Effect) */
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); }
+            50% { transform: scale(1.05); box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4); } /* Increased scale and shadow */
+            100% { transform: scale(1); box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); }
+        }
+
+        /* 2. Marquee Animation for Sliding Text */
+        @keyframes marquee {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+
         /* --- General Styling and Layout (Tailored for Mobile) --- */
         body {
             display: flex;
@@ -28,15 +43,13 @@
             border-radius: 20px;
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
             text-align: center;
-            /* Border removed as requested: border: 5px solid #ffccb3; */
         }
 
-        /* --- Header and Title Styling --- */
+        /* --- Header and Title Styling (Modified for Marquee) --- */
         .logo-container {
             margin-bottom: 20px;
         }
 
-        /* Placeholder for the main logo image/emblem */
         .main-logo {
             width: 80px;
             height: 80px;
@@ -46,36 +59,37 @@
             align-items: center;
         }
         
-        /* Style for the image inside the logo container */
         .main-logo img {
-            width: 100%; /* Image fills 80px width */
-            height: 100%; /* Image fills 80px height */
-            object-fit: contain; /* Ensure the image fits without cropping */
-            border-radius: 50%; /* If you want the image to be circular */
-            border: 3px solid #f9d97a; /* Gold border around the image (retained) */
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 50%;
+            border: 3px solid #f9d97a;
         }
         
-        /* The logo-text class is no longer needed but kept for completeness */
-        .logo-text {
-            font-size: 10px;
-            text-transform: uppercase;
-            font-weight: bold;
-        }
-
-        /* Hindi Text Styling */
-        .header-text {
-            color: #a80000;
-            font-size: 30px;
-            margin-bottom: 0;
-            font-weight: 900;
-        }
-
-        .subheader-text {
-            color: #a80000;
-            font-size: 20px;
-            margin-top: 5px;
+        /* New Container for Sliding Text */
+        .marquee-container {
+            overflow: hidden; /* Hide content that slides outside */
+            white-space: nowrap; /* Keep text on a single line */
+            width: 100%; /* Important for marquee effect */
             margin-bottom: 40px;
         }
+        
+        .marquee-text {
+            display: inline-block;
+            color: #a80000;
+            font-size: 24px; /* Combined size */
+            font-weight: 900;
+            padding-left: 100%; /* Start the text outside the right edge */
+            animation: marquee 10s linear infinite; /* Apply the sliding animation */
+        }
+        
+        /* The header-text and subheader-text classes are no longer used for the main title,
+           but their styling is merged into .marquee-text. */
+        .header-text, .subheader-text {
+             display: none; /* Hide old separate headings */
+        }
+
 
         /* --- Social Icons Grid Layout and Interaction --- */
         .social-icons {
@@ -124,7 +138,6 @@
         .icon-youtube i { color: #FF0000; }
         .icon-spotify i { color: #1DB954; }
         .icon-mail i { color: #D44638; }
-        /* Note: Twitter icon uses fa-x-twitter in the HTML, but this class targets the default fab fa-twitter */
         .icon-twitter i { color: #1DA1F2; } 
         .icon-instagram i { color: #C13584; }
         .icon-facebook i { color: #1877F2; }
@@ -147,7 +160,7 @@
             padding: 5px;
         }
         
-        /* Official Website Button */
+        /* Official Website Button (Pulse Animation Applied) */
         .website-button {
             display: inline-block;
             background-color: #a80000;
@@ -160,6 +173,9 @@
             font-weight: bold;
             margin-top: 20px;
             transition: background-color 0.2s ease-in-out;
+            
+            /* --- Animation Applied (Updated for stronger pulse) --- */
+            animation: pulse 1.8s infinite ease-in-out; /* Slightly faster animation */
         }
         
         .website-button:hover {
@@ -180,6 +196,10 @@
         <div class="main-logo">
             <img src="logo.png" alt="गौ सम्मान आह्वान अभियान Logo">
         </div>
+    </div>
+    
+    <div class="marquee-container">
+        <div class="marquee-text">​🕉️ गौ सम्मान आह्वान अभियान 🚩 🐄 🕉️</div>
     </div>
     
     <h1 class="header-text">गौ सम्मान</h1>
@@ -241,3 +261,5 @@
 
 </body>
 </html>
+```http://googleusercontent.com/generated_image_content/0
+
