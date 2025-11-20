@@ -62,15 +62,17 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: hidden; /* Circle properly clip karne ke liye */
 }
 
 .main-logo img {
     width: 100%;
     height: 100%;
-    object-fit: cover;  /* contain se cover fix kiya taaki black/white glitch na aaye */
+    object-fit: cover;  /* Image circle ke andar fully fill ho jaye */
     border-radius: 50%;
-    border: 2px solid gold; /* Patla circular border like app-container */
-    display: block;  /* Inline image gap remove karne ke liye */
+    border: 2px solid gold; /* Patla circular border */
+    display: block;
+    box-sizing: border-box; /* Symmetric border ke liye */
 }
 
 /* Side logos unchanged */
