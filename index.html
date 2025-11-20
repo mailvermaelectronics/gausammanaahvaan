@@ -11,14 +11,14 @@
 
 /* --- Animation Keyframes --- */
 @keyframes pulse {
-    0% { transform: scale(1); box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); }
-    50% { transform: scale(1.08); box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5); }
-    100% { transform: scale(1); box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); }
+    0% { transform: scale(1); box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
+    50% { transform: scale(1.08); box-shadow: 0 8px 20px rgba(0,0,0,0.5); }
+    100% { transform: scale(1); box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
 }
 
-/* FIXED: continuous marquee */
+/* PERFECT SMOOTH MARQUEE — NO JHATKA */
 @keyframes marqueeFlow {
-    0% { transform: translateX(0); }
+    0%   { transform: translateX(0); }
     100% { transform: translateX(-50%); }
 }
 
@@ -40,7 +40,7 @@ body {
     background-color: white;
     padding: 30px 20px;
     border-radius: 20px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
     text-align: center;
 }
 
@@ -91,33 +91,30 @@ body {
     white-space: nowrap;
     width: 100%;
     margin-bottom: 40px;
-    margin-top: 25px;  /* Avoid overlap with logos */
+    margin-top: 25px;
 }
 
-/* track that moves */
 .marquee-track {
     display: flex;
     width: max-content;
     animation: marqueeFlow 7s linear infinite;
 }
 
-/* text blocks */
+/* FINAL — ZERO GAP, ZERO JHATKA */
 .marquee-item {
     font-size: 24px;
     font-weight: 900;
     color: #a80000;
-    padding-right: 80px;
+    padding-right: 8px;   /* FIXED PERFECT SPACING */
 }
 
-/* --- Hide headers (as in your code) --- */
-.header-text, .subheader-text {
-    display: none;
-}
+/* Hide headers */
+.header-text, .subheader-text { display: none; }
 
-/* --- Social Icons Grid --- */
+/* Social Icons Grid */
 .social-icons {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3,1fr);
     gap: 20px;
     margin-bottom: 50px;
 }
@@ -143,68 +140,61 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
 }
 
-.icon-wrapper i {
-    font-size: 30px;
-}
+.icon-wrapper i { font-size: 30px; }
 
-/* Colors */
-.icon-apple i { color: #888; }
-.icon-whatsapp i { color: #25D366; }
-.icon-youtube i { color: #FF0000; }
-.icon-spotify i { color: #1DB954; }
-.icon-mail i { color: #D44638; }
-.icon-twitter i { color: #1DA1F2; }
-.icon-instagram i { color: #C13584; }
-.icon-facebook i { color: #1877F2; }
+.icon-apple i { color:#888; }
+.icon-whatsapp i { color:#25D366; }
+.icon-youtube i { color:#FF0000; }
+.icon-spotify i { color:#1DB954; }
+.icon-mail i { color:#D44638; }
+.icon-twitter i { color:#1DA1F2; }
+.icon-instagram i { color:#C13584; }
+.icon-facebook i { color:#1877F2; }
 
 /* Connect Button */
 .connect-us {
-    background-color: #a80000;
-    color: white;
-    font-size: 12px;
-    font-weight: bold;
-    border-radius: 50px;
-    width: 60px;
-    height: 60px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    background-color:#a80000;
+    color:white;
+    font-size:12px;
+    font-weight:bold;
+    border-radius:50px;
+    width:60px;
+    height:60px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
 }
 
 /* Website Button */
 .website-button {
-    display: inline-block;
-    background-color: #a80000;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 25px;
-    text-decoration: none;
-    font-size: 14px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    font-weight: bold;
-    margin-top: 20px;
-    animation: pulse 1s infinite ease-in-out;
+    display:inline-block;
+    background-color:#a80000;
+    color:white;
+    padding:10px 20px;
+    border-radius:25px;
+    text-decoration:none;
+    font-size:14px;
+    box-shadow:0 2px 5px rgba(0,0,0,0.2);
+    font-weight:bold;
+    margin-top:20px;
+    animation:pulse 1s infinite ease-in-out;
 }
 
-.website-button:hover {
-    background-color: #880000;
-}
+.website-button:hover { background-color:#880000; }
 
-.url-text {
-    color: #ffccb3;
-}
+.url-text { color:#ffccb3; }
 
-.mobile-text { display: inline; }
-.desktop-text { display: none; }
-.mobile-break { display: block; }
+.mobile-text { display:inline; }
+.desktop-text { display:none; }
+.mobile-break { display:block; }
 
 @media(min-width:768px){
-    .app-container { max-width: 500px; padding: 40px 30px; }
-    .website-button { white-space: nowrap; }
+    .app-container { max-width:500px; padding:40px 30px; }
+    .website-button { white-space:nowrap; }
     .mobile-text { display:none; }
     .desktop-text { display:inline; }
     .mobile-break { display:none; }
@@ -235,19 +225,16 @@ body {
         </div>
     </div>
 
-    <!-- FIXED CONTINUOUS MARQUEE -->
     <!-- PERFECT NO-JHATKA MARQUEE -->
 <div class="marquee-container">
     <div class="marquee-track">
 
-        <!-- COPY 1 -->
         <div class="marquee-item">
-            🕉️गौ सम्मान आह्वान अभियान🚩🐄🕉️गौ सम्मान आह्वान अभियान🚩🐄🕉️गौ सम्मान आह्वान अभियान🚩🐄🕉️गौ सम्मान आह्वान अभियान🚩🐄
+            🕉️ गौ सम्मान आह्वान अभियान 🚩 🐄 🕉️ गौ सम्मान आह्वान अभियान 🚩 🐄 🕉️ गौ सम्मान आह्वान अभियान 🚩🐄 🕉️ गौ सम्मान आह्वान अभियान 🚩 🐄
         </div>
 
-        <!-- COPY 2 (EXACT SAME — NO HIDDEN SPACE) -->
         <div class="marquee-item">
-            🕉️गौ सम्मान आह्वान अभियान🚩🐄🕉️गौ सम्मान आह्वान अभियान🚩🐄🕉️गौ सम्मान आह्वान अभियान🚩🐄🕉️गौ सम्मान आह्वान अभियान🚩🐄
+            🕉️ गौ सम्मान आह्वान अभियान 🚩 🐄 🕉️ गौ सम्मान आह्वान अभियान 🚩 🐄 🕉️ गौ सम्मान आह्वान अभियान 🚩 🐄 🕉️ गौ सम्मान आह्वान अभियान 🚩 🐄
         </div>
 
     </div>
