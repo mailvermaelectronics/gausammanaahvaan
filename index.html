@@ -1,348 +1,298 @@
 <!DOCTYPE html>
 <html lang="hi">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>गौ सम्मान आह्वान अभियान</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    
-    <style>
-        /* --- Animation Keyframes --- */
-        
-        @keyframes pulse {
-            0% { transform: scale(1); box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); }
-            50% { transform: scale(1.08); box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5); } 
-            100% { transform: scale(1); box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); }
-        }
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-        @keyframes marquee {
-            0% { transform: translateX(0%); } 
-            100% { transform: translateX(-50%); } 
-        }
+<!-- FONT AWESOME -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 
-        /* --- General Styling and Layout (Tailored for Mobile) --- */
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            margin: 0;
-            background-color: #f0f0f0;
-            font-family: 'Inter', sans-serif;
-            padding: 20px;
-        }
+<style>
 
-        .app-container {
-            width: 100%;
-            max-width: 360px; /* Max mobile width (360px) */
-            background-color: white;
-            padding: 30px 20px;
-            border-radius: 20px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-            text-align: center;
-        }
-        
-        /* --- Header and Title Styling --- */
-        .logo-container {
-            margin-bottom: 20px;
-            display: flex; 
-            justify-content: center; 
-            align-items: center; 
-            gap: 50px; 
-        }
+/* --- Animation Keyframes --- */
+@keyframes pulse {
+    0% { transform: scale(1); box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); }
+    50% { transform: scale(1.08); box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5); }
+    100% { transform: scale(1); box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); }
+}
 
-        .main-logo {
-            width: 80px;
-            height: 80px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-shrink: 0;
-        }
-        
-        .main-logo img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            border-radius: 50%;
-            border: 3px solid #f9d97a;
-        }
+/* FIXED: continuous marquee */
+@keyframes marqueeFlow {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
 
-        .side-logo-left,
-        .side-logo-right {
-            width: 60px;
-            height: 60px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-shrink: 0;
-        }
+/* --- General Styling --- */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+    font-family: 'Inter', sans-serif;
+    padding: 20px;
+}
 
-        .side-logo-left img,
-        .side-logo-right img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            border-radius: 50%;
-            border: 2px solid #f9d97a;
-            background-color: #ffffff;
-        }
-        
-        .marquee-container {
-            overflow: hidden; 
-            white-space: nowrap; 
-            width: 100%; 
-            margin-bottom: 40px;
-            text-align: left; 
-            box-sizing: border-box;
-        }
-        
-        .marquee-text {
-            display: inline-block;
-            color: #a80000;
-            font-size: 24px; 
-            font-weight: 900;
-            width: max-content; 
-            animation: marquee 4s linear infinite; 
-            margin-right: 150px;
-        }
-        
-        .header-text, .subheader-text {
-             display: none; 
-        }
+.app-container {
+    width: 100%;
+    max-width: 360px;
+    background-color: white;
+    padding: 30px 20px;
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
 
-        /* --- Social Icons Grid Layout --- */
-        .social-icons {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-            margin-bottom: 50px;
-        }
-        
-        .social-icons a {
-            text-decoration: none;
-            display: block;
-            transition: transform 0.2s ease-in-out;
-            justify-self: center; 
-        }
+/* --- Header Logos --- */
+.logo-container {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+}
 
-        .social-icons a:hover,
-        .social-icons a:focus {
-            transform: scale(1.1);
-            outline: none;
-        }
-        .social-icons a:active {
-            transform: scale(0.95);
-        }
+.main-logo {
+    width: 80px;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
-        .icon-wrapper {
-            width: 50px;
-            height: 50px;
-            background-color: #fff;
-            border-radius: 50%;
-            border: 1px solid #ccc;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-            transition: background-color 0.2s;
-        }
-        
-        .icon-wrapper i {
-            font-size: 30px;
-        }
-        
-        .icon-apple i { color: #888; }
-        .icon-whatsapp i { color: #25D366; }
-        .icon-youtube i { color: #FF0000; }
-        .icon-spotify i { color: #1DB954; }
-        .icon-mail i { color: #D44638; }
-        .icon-twitter i { color: #1DA1F2; } 
-        .icon-instagram i { color: #C13584; }
-        .icon-facebook i { color: #1877F2; }
-        
-        .connect-us {
-            background-color: #a80000;
-            color: white;
-            font-size: 12px;
-            font-weight: bold;
-            border: none;
-            line-height: 1.2;
-            border-radius: 50px;
-            width: 60px;
-            height: 60px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 5px;
-        }
-        
-        /* Official Website Button (Animation Re-applied) */
-        .website-button {
-            display: inline-block;
-            background-color: #a80000;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 25px;
-            text-decoration: none;
-            font-size: 14px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-            font-weight: bold;
-            margin-top: 20px;
-            transition: background-color 0.2s ease-in-out;
-            animation: pulse 1.0s infinite ease-in-out; 
-        }
-        
-        .website-button:hover {
-            background-color: #880000;
-        }
-        
-        /* URL टेक्स्ट का कलर */
-        .website-button .url-text {
-            color: #ffccb3;
-        }
-        
-        /* --- Default (Mobile/Small Screen) Setting --- */
-        /* Mobile: Mobile text दिखेगा, Desktop text छिप जाएगा */
-        .website-button .mobile-text { 
-            display: inline; 
-        }
-        .website-button .desktop-text {
-            display: none;
-        }
-        /* Mobile: <br> को दिखाने के लिए */
-        .website-button .mobile-break {
-            display: block; 
-            content: "";
-        }
+.main-logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 50%;
+    border: 3px solid #f9d97a;
+}
 
-        /* --- Media Query for DESKTOP (768px and up) --- */
-        @media (min-width: 768px) {
-            .app-container {
-                max-width: 500px;
-                padding: 40px 30px;
-            }
-            
-            /* FIX: Ensure the entire button content stays on one line on desktop */
-            .website-button {
-                white-space: nowrap;
-            }
+.side-logo-left, .side-logo-right {
+    width: 60px;
+    height: 60px;
+}
 
-            /* Desktop: Mobile text छिप जाएगा, Desktop text (डैश के साथ) दिखेगा */
-            .website-button .mobile-text { 
-                display: none; 
-            }
-            .website-button .desktop-text {
-                display: inline;
-            }
-            /* FIX: Desktop पर <br> को छिपाने के लिए */
-            .website-button .mobile-break {
-                display: none;
-            }
-        }
-        /* --- END OF FIX --- */
-        
-    </style>
+.side-logo-left img, .side-logo-right img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 50%;
+    border: 2px solid #f9d97a;
+    background-color: #ffffff;
+}
+
+/* ===============================
+   CONTINUOUS MARQUEE (FIXED)
+   =============================== */
+.marquee-container {
+    overflow: hidden;
+    white-space: nowrap;
+    width: 100%;
+    margin-bottom: 40px;
+    margin-top: 25px;  /* Avoid overlap with logos */
+}
+
+/* track that moves */
+.marquee-track {
+    display: flex;
+    width: max-content;
+    animation: marqueeFlow 7s linear infinite;
+}
+
+/* text blocks */
+.marquee-item {
+    font-size: 24px;
+    font-weight: 900;
+    color: #a80000;
+    padding-right: 80px;
+}
+
+/* --- Hide headers (as in your code) --- */
+.header-text, .subheader-text {
+    display: none;
+}
+
+/* --- Social Icons Grid --- */
+.social-icons {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-bottom: 50px;
+}
+
+.social-icons a {
+    text-decoration: none;
+    display: block;
+    transition: transform 0.2s ease-in-out;
+    justify-self: center;
+}
+
+.social-icons a:hover,
+.social-icons a:focus {
+    transform: scale(1.1);
+}
+
+.icon-wrapper {
+    width: 50px;
+    height: 50px;
+    background-color: #fff;
+    border-radius: 50%;
+    border: 1px solid #ccc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.icon-wrapper i {
+    font-size: 30px;
+}
+
+/* Colors */
+.icon-apple i { color: #888; }
+.icon-whatsapp i { color: #25D366; }
+.icon-youtube i { color: #FF0000; }
+.icon-spotify i { color: #1DB954; }
+.icon-mail i { color: #D44638; }
+.icon-twitter i { color: #1DA1F2; }
+.icon-instagram i { color: #C13584; }
+.icon-facebook i { color: #1877F2; }
+
+/* Connect Button */
+.connect-us {
+    background-color: #a80000;
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 50px;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Website Button */
+.website-button {
+    display: inline-block;
+    background-color: #a80000;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-size: 14px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    font-weight: bold;
+    margin-top: 20px;
+    animation: pulse 1s infinite ease-in-out;
+}
+
+.website-button:hover {
+    background-color: #880000;
+}
+
+.url-text {
+    color: #ffccb3;
+}
+
+.mobile-text { display: inline; }
+.desktop-text { display: none; }
+.mobile-break { display: block; }
+
+@media(min-width:768px){
+    .app-container { max-width: 500px; padding: 40px 30px; }
+    .website-button { white-space: nowrap; }
+    .mobile-text { display:none; }
+    .desktop-text { display:inline; }
+    .mobile-break { display:none; }
+}
+
+</style>
 </head>
+
 <body>
 
 <div class="app-container">
-    
+
+    <!-- LOGOS -->
     <div class="logo-container">
         <div class="side-logo-left">
-            <img 
-                src="res/cow1.png" 
-                onerror="this.onerror=null;this.src='https://placehold.co/60x60/f9d97a/a80000?text=Cow+Logo+1'"
-                alt="गौ सम्मान आह्वान अभियान">
+            <img src="res/cow1.png"
+                 onerror="this.src='https://placehold.co/60x60/f9d97a/a80000?text=Cow+Logo+1'">
         </div>
-        
+
         <div class="main-logo">
-            <img 
-                src="res/logo.png" 
-                onerror="this.onerror=null;this.src='https://placehold.co/80x80/a80000/ffffff?text=LOGO'" 
-                alt="गौ सम्मान आह्वान अभियान Logo">
+            <img src="res/logo.png"
+                 onerror="this.src='https://placehold.co/80x80/a80000/ffffff?text=LOGO'">
         </div>
 
         <div class="side-logo-right">
-            <img 
-                src="res/cow2.png"
-                onerror="this.onerror=null;this.src='https://placehold.co/60x60/f9d97a/a80000?text=Cow+Logo+2'"
-                alt="गौ सम्मान आह्वान अभियान">
+            <img src="res/cow2.png"
+                 onerror="this.src='https://placehold.co/60x60/f9d97a/a80000?text=Cow+Logo+2'">
         </div>
     </div>
-    
+
+    <!-- FIXED CONTINUOUS MARQUEE -->
     <div class="marquee-container">
-        <div class="marquee-text">
-            <span>गौ सम्मान आह्वान अभियान 🚩 🐄 🕉️</span>
-            <span class="copy-2">गौ सम्मान आह्वान अभियान 🚩 🐄 🕉️</span>
+        <div class="marquee-track">
+            <div class="marquee-item">गौ सम्मान आह्वान अभियान 🚩 🐄 🕉️</div>
+            <div class="marquee-item">गौ सम्मान आह्वान अभियान 🚩 🐄 🕉️</div>
         </div>
     </div>
-    
-    <h1 class="header-text">गौ सम्मान</h1>
-    <h2 class="subheader-text">आह्वान अभियान</h2>
-    
+
+    <!-- Social Icons -->
     <div class="social-icons">
-        <a href="mailto:gausamman@gmail.com" target="_blank" aria-label="Apple App Store Link">
-            <div class="icon-wrapper icon-apple">
-                <i class="fab fa-apple"></i>
-            </div>
+
+        <a href="mailto:gausamman@gmail.com">
+            <div class="icon-wrapper icon-apple"><i class="fab fa-apple"></i></div>
         </a>
-        <a href="https://chat.whatsapp.com/EJKog7pvLFGLx7mzrts656" target="_blank" aria-label="WhatsApp Link">
-            <div class="icon-wrapper icon-whatsapp">
-                <i class="fab fa-whatsapp"></i>
-            </div>
+
+        <a href="https://chat.whatsapp.com/EJKog7pvLFGLx7mzrts656" target="_blank">
+            <div class="icon-wrapper icon-whatsapp"><i class="fab fa-whatsapp"></i></div>
         </a>
-        <a href="https://www.youtube.com/@Gausammanaahvaanabhiyaan" target="_blank" aria-label="YouTube Link">
-            <div class="icon-wrapper icon-youtube">
-                <i class="fab fa-youtube"></i>
-            </div>
+
+        <a href="https://www.youtube.com/@Gausammanaahvaanabhiyaan" target="_blank">
+            <div class="icon-wrapper icon-youtube"><i class="fab fa-youtube"></i></div>
         </a>
-        
-        <a href="https://open.spotify.com/user/31hpaxs5skl43g65frugwkxyzfwm?si=8N-tPs2GQ9ixaG-eKRU4rA&nd=1&dlsi=645dce9f1e184bff" target="_blank" aria-label="Spotify Link">
-            <div class="icon-wrapper icon-spotify">
-                <i class="fab fa-spotify"></i>
-            </div>
+
+        <a href="https://open.spotify.com/user/31hpaxs5skl43g65frugwkxyzfwm" target="_blank">
+            <div class="icon-wrapper icon-spotify"><i class="fab fa-spotify"></i></div>
         </a>
-        <a href="https://www.gausamman.cloud/" target="_blank" aria-label="Connect with Us Link">
-            <div class="icon-wrapper connect-us">Connect with Us</div>
+
+        <a href="https://www.gausamman.cloud/" target="_blank">
+            <div class="icon-wrapper connect-us">Connect<br>Us</div>
         </a>
-        <a href="mailto:GSAabhiyan2027@gmail.com" aria-label="Email Link">
-            <div class="icon-wrapper icon-mail">
-                <i class="fas fa-envelope"></i>
-            </div>
+
+        <a href="mailto:GSAabhiyan2027@gmail.com">
+            <div class="icon-wrapper icon-mail"><i class="fas fa-envelope"></i></div>
         </a>
-        
-        <a href="https://twitter.com/GSAA2027" target="_blank" aria-label="Twitter Link">
-            <div class="icon-wrapper icon-twitter">
-                <i class="fab fa-x-twitter"></i>
-            </div>
+
+        <a href="https://twitter.com/GSAA2027" target="_blank">
+            <div class="icon-wrapper icon-twitter"><i class="fab fa-x-twitter"></i></div>
         </a>
-        <a href="https://www.instagram.com/gausmmaanaahvaan/" target="_blank" aria-label="Instagram Link">
-            <div class="icon-wrapper icon-instagram">
-                <i class="fab fa-instagram"></i>
-            </div>
+
+        <a href="https://www.instagram.com/gausmmaanaahvaan/" target="_blank">
+            <div class="icon-wrapper icon-instagram"><i class="fab fa-instagram"></i></div>
         </a>
-        <a href="https://www.facebook.com/profile.php?id=61583545206576" target="_blank" aria-label="Facebook Link">
-            <div class="icon-wrapper icon-facebook">
-                <i class="fab fa-facebook-f"></i>
-            </div>
+
+        <a href="https://www.facebook.com/profile.php?id=61583545206576" target="_blank">
+            <div class="icon-wrapper icon-facebook"><i class="fab fa-facebook-f"></i></div>
         </a>
+
     </div>
-    
+
+    <!-- WEBSITE BUTTON -->
     <a href="https://www.gausamman.cloud/" target="_blank" class="website-button">
         <span class="mobile-text">🌐 Visit Official Website</span>
         <span class="desktop-text">🌐 Visit Official Website - </span>
-        <br class="mobile-break"> 
+        <br class="mobile-break">
         <span class="url-text">www.gausamman.cloud</span>
     </a>
-    
-</div>
 
-<script>
-    // Note: The JavaScript remains the same and is not essential for the layout fix.
-    const marqueeText = document.querySelector('.marquee-text');
-</script>
+</div>
 
 </body>
 </html>
