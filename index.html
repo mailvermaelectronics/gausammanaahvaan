@@ -23,9 +23,8 @@
 
 /* --- General Styling --- */
 body {
-    /* Updated for cow strip layout */
     display: flex;
-    flex-direction: column; /* Stack container and strip vertically */
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
@@ -46,9 +45,9 @@ body {
     text-align: center;
     border: 3px solid gold;
     box-sizing: border-box;
-    /* Added margin to separate from the cow strip */
+    /* Removed margin-bottom since the cow strip is now inside */
     margin-bottom: 0; 
-    z-index: 10; /* Ensure container is above the cow strip */
+    z-index: 10;
 }
 
 /* --- Header Logos --- */
@@ -109,7 +108,7 @@ body {
 }
 
 /* ===============================
-    CONTINUOUS MARQUEE (FIXED)
+    CONTINUOUS MARQUEE (Restored to animated)
     =============================== */
 .marquee-container {
     overflow: hidden;
@@ -122,7 +121,7 @@ body {
 .marquee-track {
     display: flex;
     width: max-content;
-    animation: marqueeFlow 7s linear infinite;
+    animation: marqueeFlow 7s linear infinite; /* Animation restored */
 }
 
 /* FINAL — ZERO GAP, ZERO JHATKA */
@@ -131,6 +130,7 @@ body {
     font-weight: 900;
     color: #a80000;
     padding-right: 8px;  
+    white-space: nowrap; /* Ensure text stays on one line for scrolling */
 }
 
 /* Hide headers */
@@ -141,7 +141,7 @@ body {
     display: grid;
     grid-template-columns: repeat(3,1fr);
     gap: 20px;
-    margin-bottom: 50px;
+    margin-bottom: 50px; /* Restored original margin */
 }
 
 .social-icons a {
@@ -206,6 +206,7 @@ body {
     box-shadow:0 2px 5px rgba(0,0,0,0.2);
     font-weight:bold;
     margin-top:20px;
+    margin-bottom: 20px; /* Added margin below button */
     animation:pulse 1s infinite ease-in-out;
 }
 
@@ -226,29 +227,30 @@ body {
 }
 
 /* ===============================
-    COW STRIP FIX
+    COW STRIP INSIDE CONTAINER FIX
     =============================== */
-.bottom-cow-strip {
-    /* Position the strip relative to the main container */
-    width: 100%;
-    max-width: 100%; 
-    /* The strip's top edge aligns with the bottom of the container */
-    margin-top: -80px; /* Adjust this value to control how much the strip overlaps/hides behind the container */
-    overflow: hidden;
+.cow-footer-image {
+    width: 100%; /* Take full width of the container */
+    margin-top: 10px; /* Space below the button */
+    margin-bottom: -40px; /* Move image down slightly to be near the border bottom */
     position: relative;
-    display: flex;
-    justify-content: center; /* Center the strip under the main card */
-    z-index: 5; /* Keep it below the main card */
+    overflow: hidden;
 }
 
-.bottom-cow-strip img {
-    /* This creates the continuous repeating pattern visible in the screenshot */
-    width: 1500px; /* Make it very wide to ensure repetition across screen widths */
+.cow-footer-image img {
+    /* To show only a portion of the wide image */
+    width: 300%; /* Make the image wider than the container */
+    max-width: 300%;
     height: auto;
-    object-fit: cover;
     display: block;
+    /* Center the wide image so the middle portion is visible */
+    transform: translateX(-33%); 
+    object-fit: cover;
 }
 
+
+/* Remove the previous outer cow strip CSS, as it is now inside */
+.bottom-cow-strip { display: none; }
 </style>
 </head>
 
@@ -274,18 +276,18 @@ body {
     </div>
 
     <div class="marquee-container">
-    <div class="marquee-track">
+        <div class="marquee-track">
 
-        <div class="marquee-item">
-            🕉️ गौ सम्मान आह्वान अभियान 🚩 🐄 🕉️ गौ सम्मान आह्वान अभियान 🚩 🐄 🕉️ गौ सम्मान आह्वान अभियान 🚩🐄 🕉️ गौ सम्मान आह्वान अभियान 🚩 🐄
+            <div class="marquee-item">
+                🕉️ गौ सम्मान आह्वान अभियान 🚩 🐄 🕉️ गौ सम्मान आह्वान अभियान 🚩 🐄 🕉️ गौ सम्मान आह्वान अभियान 🚩🐄 🕉️ गौ सम्मान आह्वान अभियान 🚩 🐄
+            </div>
+
+            <div class="marquee-item">
+                🕉️ गौ सम्मान आह्वान अभियान 🚩 🐄 🕉️ गौ सम्मान आह्वान अभियान 🚩 🐄 🕉️ गौ सम्मान आह्वान अभियान 🚩 🐄 🕉️ गौ सम्मान आह्वान अभियान 🚩 🐄
+            </div>
+
         </div>
-
-        <div class="marquee-item">
-            🕉️ गौ सम्मान आह्वान अभियान 🚩 🐄 🕉️ गौ सम्मान आह्वान अभियान 🚩 🐄 🕉️ गौ सम्मान आह्वान अभियान 🚩 🐄 🕉️ गौ सम्मान आह्वान अभियान 🚩 🐄
-        </div>
-
     </div>
-</div>
 
     <div class="social-icons">
 
@@ -333,13 +335,16 @@ body {
         <br class="mobile-break">
         <span class="url-text">www.gausamman.cloud</span>
     </a>
+
+    <div class="cow-footer-image">
+        <img src="res/cow3.png" 
+            alt="A strip of six cows feeding their calves"
+            onerror="this.src='https://placehold.co/1500x120/f0f0f0/888888?text=Cow+Strip+Image'">
+    </div>
 </div>
 
 <div class="bottom-cow-strip">
-    <img src="res/cow3.png" 
-         alt="A strip of six cows feeding their calves"
-         onerror="this.src='https://placehold.co/1500x120/f0f0f0/888888?text=Cow+Strip+Image'">
-</div>
+    </div>
 
 </body>
 </html>
