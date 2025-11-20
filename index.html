@@ -67,11 +67,13 @@ body {
 .main-logo img {
     width: 100%;
     height: 100%;
-    object-fit: contain;
+    object-fit: cover;  /* contain se cover fix kiya taaki black/white glitch na aaye */
     border-radius: 50%;
     border: 2px solid gold; /* Patla circular border like app-container */
+    display: block;  /* Inline image gap remove karne ke liye */
 }
 
+/* Side logos unchanged */
 .side-logo-left, .side-logo-right {
     width: 60px;
     height: 60px;
