@@ -4,7 +4,6 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<!-- FONT AWESOME -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 
 <style>
@@ -18,13 +17,15 @@
 
 /* PERFECT SMOOTH MARQUEE — NO JHATKA */
 @keyframes marqueeFlow {
-    0%   { transform: translateX(0); }
+    0%    { transform: translateX(0); }
     100% { transform: translateX(-50%); }
 }
 
 /* --- General Styling --- */
 body {
+    /* Updated for cow strip layout */
     display: flex;
+    flex-direction: column; /* Stack container and strip vertically */
     justify-content: center;
     align-items: center;
     min-height: 100vh;
@@ -45,6 +46,9 @@ body {
     text-align: center;
     border: 3px solid gold;
     box-sizing: border-box;
+    /* Added margin to separate from the cow strip */
+    margin-bottom: 0; 
+    z-index: 10; /* Ensure container is above the cow strip */
 }
 
 /* --- Header Logos --- */
@@ -105,8 +109,8 @@ body {
 }
 
 /* ===============================
-   CONTINUOUS MARQUEE (FIXED)
-   =============================== */
+    CONTINUOUS MARQUEE (FIXED)
+    =============================== */
 .marquee-container {
     overflow: hidden;
     white-space: nowrap;
@@ -221,6 +225,30 @@ body {
     .mobile-break { display:none; }
 }
 
+/* ===============================
+    COW STRIP FIX
+    =============================== */
+.bottom-cow-strip {
+    /* Position the strip relative to the main container */
+    width: 100%;
+    max-width: 100%; 
+    /* The strip's top edge aligns with the bottom of the container */
+    margin-top: -80px; /* Adjust this value to control how much the strip overlaps/hides behind the container */
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    justify-content: center; /* Center the strip under the main card */
+    z-index: 5; /* Keep it below the main card */
+}
+
+.bottom-cow-strip img {
+    /* This creates the continuous repeating pattern visible in the screenshot */
+    width: 1500px; /* Make it very wide to ensure repetition across screen widths */
+    height: auto;
+    object-fit: cover;
+    display: block;
+}
+
 </style>
 </head>
 
@@ -228,26 +256,24 @@ body {
 
 <div class="app-container">
 
-    <!-- LOGOS -->
     <div class="logo-container">
         <div class="side-logo-left">
             <img src="res/cow1.png"
-                 onerror="this.src='https://placehold.co/60x60/f9d97a/a80000?text=Cow+Logo+1'">
+                    onerror="this.src='https://placehold.co/60x60/f9d97a/a80000?text=Cow+Logo+1'">
         </div>
 
         <div class="main-logo">
             <img src="res/logo.png"
-                 onerror="this.src='https://placehold.co/80x80/a80000/ffffff?text=LOGO'">
+                    onerror="this.src='https://placehold.co/80x80/a80000/ffffff?text=LOGO'">
         </div>
 
         <div class="side-logo-right">
             <img src="res/cow2.png"
-                 onerror="this.src='https://placehold.co/60x60/f9d97a/a80000?text=Cow+Logo+2'">
+                    onerror="this.src='https://placehold.co/60x60/f9d97a/a80000?text=Cow+Logo+2'">
         </div>
     </div>
 
-    <!-- PERFECT NO-JHATKA MARQUEE -->
-<div class="marquee-container">
+    <div class="marquee-container">
     <div class="marquee-track">
 
         <div class="marquee-item">
@@ -261,7 +287,6 @@ body {
     </div>
 </div>
 
-    <!-- Social Icons -->
     <div class="social-icons">
 
         <a href="mailto:gausamman@gmail.com">
@@ -302,29 +327,18 @@ body {
 
     </div>
 
-    <!-- WEBSITE BUTTON -->
     <a href="https://www.gausamman.cloud/" target="_blank" class="website-button">
         <span class="mobile-text">🌐 Visit Official Website</span>
         <span class="desktop-text">🌐 Visit Official Website - </span>
         <br class="mobile-break">
         <span class="url-text">www.gausamman.cloud</span>
     </a>
-
-
-
-
-
-
-    
+</div>
 
 <div class="bottom-cow-strip">
-        <img src="res/cow3.png" alt="A strip of six cows feeding their calves">
-    </div>
-
-
-
-    
-    
+    <img src="res/cow3.png" 
+         alt="A strip of six cows feeding their calves"
+         onerror="this.src='https://placehold.co/1500x120/f0f0f0/888888?text=Cow+Strip+Image'">
 </div>
 
 </body>
