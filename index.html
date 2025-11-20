@@ -56,6 +56,7 @@ body {
     gap: 50px;
 }
 
+/* Main logo fix */
 .main-logo {
     width: 80px;
     height: 80px;
@@ -64,25 +65,32 @@ body {
     align-items: center;
     overflow: hidden;
     border-radius: 50%;
-    background-color: black; /* Left/right edge fix */
-    padding: 2px; /* Golden border ke andar image thik center me */
+    background-color: black; /* black edge */
+    padding: 2px;
     box-sizing: border-box;
 }
 
 .main-logo img {
     width: 100%;
     height: 100%;
-    object-fit: cover;  
+    object-fit: cover;
     border-radius: 50%;
     border: 2px solid gold;
     display: block;
     box-sizing: border-box;
 }
 
-/* Side logos unchanged */
+/* Side logos fix — black circle above golden */
 .side-logo-left, .side-logo-right {
     width: 60px;
     height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background-color: black; /* thin black circle */
+    padding: 2px; /* thin spacing above golden */
+    box-sizing: border-box;
 }
 
 .side-logo-left img, .side-logo-right img {
@@ -90,8 +98,10 @@ body {
     height: 100%;
     object-fit: contain;
     border-radius: 50%;
-    border: 2px solid #f9d97a;
+    border: 2px solid #f9d97a; /* golden circle */
     background-color: #ffffff;
+    display: block;
+    box-sizing: border-box;
 }
 
 /* ===============================
