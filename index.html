@@ -4,20 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
+<!-- FONT AWESOME -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 
 <style>
-/* GLOBAL RESET FOR CONSISTENT LAYOUT */
-html, body {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box; /* Ensures padding and border are included in the element's total width and height */
-}
-
-*, *::before, *::after {
-    box-sizing: inherit;
-}
-
 
 /* --- Animation Keyframes --- */
 @keyframes pulse {
@@ -38,10 +28,10 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+    margin: 0;
     background-color: #f0f0f0;
     font-family: 'Inter', sans-serif;
-    padding: 20px; /* This padding provides space around the app-container */
-    overflow-x: hidden; /* FIX: Prevents horizontal scroll causing border cut-off */
+    padding: 20px;
 }
 
 .app-container {
@@ -52,7 +42,7 @@ body {
     border-radius: 20px;
     box-shadow: 0 8px 20px rgba(0,0,0,0.1);
     text-align: center;
-    border: 5px solid gold;  /* <-- GOLDEN BORDER ADDED */
+    border: 3px solid gold;  /* पतला golden border */
 }
 
 /* --- Header Logos --- */
@@ -203,23 +193,6 @@ body {
 .desktop-text { display:none; }
 .mobile-break { display:block; }
 
-/* --- Bottom Cow Strip Styling --- */
-.bottom-cow-strip {
-    /* The image itself is a strip of 6 cows on a white/light grey background */
-    width: 100%;
-    height: auto; /* Adjust height automatically based on width */
-    margin-top: 30px; /* Space between the button and the image */
-    max-width: 100%; /* Ensure it fits within the container */
-}
-
-.bottom-cow-strip img {
-    width: 100%;
-    height: auto;
-    display: block; /* Removes any extra space below the image */
-}
-/* ---------------------------------- */
-
-
 @media(min-width:768px){
     .app-container { max-width:500px; padding:40px 30px; }
     .website-button { white-space:nowrap; }
@@ -235,6 +208,7 @@ body {
 
 <div class="app-container">
 
+    <!-- LOGOS -->
     <div class="logo-container">
         <div class="side-logo-left">
             <img src="res/cow1.png"
@@ -252,11 +226,12 @@ body {
         </div>
     </div>
 
-    <div class="marquee-container">
+    <!-- PERFECT NO-JHATKA MARQUEE -->
+<div class="marquee-container">
     <div class="marquee-track">
 
         <div class="marquee-item">
-            🕉️ गौ सम्मान आह्वान अभियान 🚩 🐄 🕉️ गौ सम्मान आह्वान अभियान 🚩 🐄 🕉️ गौ सम्मान आह्वान अभियान 🚩 🐄 🕉️ गौ सम्मान आह्वान अभियान 🚩 🐄
+            🕉️ गौ सम्मान आह्वान अभियान 🚩 🐄 🕉️ गौ सम्मान आह्वान अभियान 🚩 🐄 🕉️ गौ सम्मान आह्वान अभियान 🚩🐄 🕉️ गौ सम्मान आह्वान अभियान 🚩 🐄
         </div>
 
         <div class="marquee-item">
@@ -266,6 +241,7 @@ body {
     </div>
 </div>
 
+    <!-- Social Icons -->
     <div class="social-icons">
 
         <a href="mailto:gausamman@gmail.com">
@@ -306,6 +282,7 @@ body {
 
     </div>
 
+    <!-- WEBSITE BUTTON -->
     <a href="https://www.gausamman.cloud/" target="_blank" class="website-button">
         <span class="mobile-text">🌐 Visit Official Website</span>
         <span class="desktop-text">🌐 Visit Official Website - </span>
@@ -313,10 +290,7 @@ body {
         <span class="url-text">www.gausamman.cloud</span>
     </a>
 
-    <div class="bottom-cow-strip">
-        <img src="1000212777.jpg" alt="A strip of six cows feeding their calves">
-    </div>
-    </div>
+</div>
 
 </body>
 </html>
