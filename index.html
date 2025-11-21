@@ -45,7 +45,6 @@ body {
     text-align: center;
     border: 3px solid #FF9933;
     box-sizing: border-box;
-    /* Removed margin-bottom since the cow strip is now inside */
     margin-bottom: 0; 
     z-index: 10;
 }
@@ -68,7 +67,7 @@ body {
     align-items: center;
     overflow: hidden;
     border-radius: 50%;
-    background-color: black; /* black edge */
+    background-color: black; 
     padding: 2px;
     box-sizing: border-box;
 }
@@ -91,8 +90,8 @@ body {
     justify-content: center;
     align-items: center;
     border-radius: 50%;
-    background-color: black; /* thin black circle */
-    padding: 2px; /* thin spacing above golden */
+    background-color: black; 
+    padding: 2px; 
     box-sizing: border-box;
 }
 
@@ -101,14 +100,14 @@ body {
     height: 100%;
     object-fit: contain;
     border-radius: 50%;
-    border: 2px solid #f9d97a; /* golden circle */
+    border: 2px solid #f9d97a; 
     background-color: #ffffff;
     display: block;
     box-sizing: border-box;
 }
 
 /* ===============================
-    CONTINUOUS MARQUEE (Restored to animated)
+    CONTINUOUS MARQUEE
     =============================== */
 .marquee-container {
     overflow: hidden;
@@ -121,16 +120,15 @@ body {
 .marquee-track {
     display: flex;
     width: max-content;
-    animation: marqueeFlow 12s linear infinite; /* Animation restored */
+    animation: marqueeFlow 12s linear infinite; 
 }
 
-/* FINAL — ZERO GAP, ZERO JHATKA */
 .marquee-item {
     font-size: 24px;
     font-weight: 900;
     color: #a80000;
     padding-right: 8px;  
-    white-space: nowrap; /* Ensure text stays on one line for scrolling */
+    white-space: nowrap; 
 }
 
 /* Hide headers */
@@ -141,7 +139,7 @@ body {
     display: grid;
     grid-template-columns: repeat(3,1fr);
     gap: 20px;
-    margin-bottom: 50px; /* Restored original margin */
+    margin-bottom: 50px;
 }
 
 .social-icons a {
@@ -194,64 +192,89 @@ body {
     align-items:center;
 }
 
-/* Website Button */
-.website-button {
-    display:inline-block;
-    border: 2px solid #FF9933;
-    background-color:#a80000;
-    color:white;
-    padding:10px 20px;
-    border-radius:25px;
-    text-decoration:none;
-    font-size:14px;
-    box-shadow:0 2px 5px rgba(0,0,0,0.2);
-    font-weight:bold;
-    margin-top:20px;
-    margin-bottom: 20px; /* Added margin below button */
-    animation:pulse 1s infinite ease-in-out;
-}
-
-.website-button:hover { background-color:#880000; }
-
-.url-text { color:#ffccb3; }
-
-.mobile-text { display:inline; }
-.desktop-text { display:none; }
-.mobile-break { display:block; }
-
-@media(min-width:768px){
-    .app-container { max-width:500px; padding:40px 30px; }
-    .website-button { white-space:nowrap; }
-    .mobile-text { display:none; }
-    .desktop-text { display:inline; }
-    .mobile-break { display:none; }
-}
-
 /* ===============================
-    COW STRIP INSIDE CONTAINER FIX
+    VISIT WEBSITE BUTTON FIXED
     =============================== */
+.website-button {
+    width: 90%;
+    margin: 30px auto;
+    padding: 18px 10px;
+    background: #b30000;
+    color: white;
+    border-radius: 40px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+    font-weight: bold;
+    animation: zoom 2.2s infinite ease-in-out;
+    transform-origin: center center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none; /* Extra underline removed */
+}
+
+.website-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transform: translateZ(0);
+}
+
+.url-text { 
+    color:#ffccb3; 
+    font-size: 14px; 
+    display: inline-block; /* Avoid full-width block */
+    text-decoration: none; /* Ensure underline removed */
+}
+
+/* Hide both by default */
+.mobile-button-content, .desktop-button-content { display: none; }
+
+/* Mobile view */
+@media(max-width:767px){
+    .mobile-button-content { 
+        display: flex; 
+        flex-direction: column; 
+        align-items: center; 
+    }
+}
+
+/* Desktop view */
+@media(min-width:768px){
+    .desktop-button-content { 
+        display: flex; 
+        flex-direction: row; 
+        align-items: center; 
+        gap:5px; 
+    }
+}
+
+@keyframes zoom {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+/* Cow Strip inside container */
 .cow-footer-image {
-    width: 100%; /* Take full width of the container */
-    margin-top: 10px; /* Space below the button */
-    margin-bottom: -40px; /* Move image down slightly to be near the border bottom */
+    width: 100%; 
+    margin-top: 10px; 
+    margin-bottom: -40px; 
     position: relative;
     overflow: hidden;
 }
 
 .cow-footer-image img {
-    /* To show only a portion of the wide image */
-    width: 300%; /* Make the image wider than the container */
+    width: 300%; 
     max-width: 300%;
     height: auto;
     display: block;
-    /* Center the wide image so the middle portion is visible */
     transform: translateX(-33%); 
     object-fit: cover;
 }
 
-
-/* Remove the previous outer cow strip CSS, as it is now inside */
 .bottom-cow-strip { display: none; }
+
 </style>
 </head>
 
@@ -262,17 +285,17 @@ body {
     <div class="logo-container">
         <div class="side-logo-left">
             <img src="res/cow1.png"
-                    onerror="this.src='https://placehold.co/60x60/f9d97a/a80000?text=Cow+Logo+1'">
+                 onerror="this.src='https://placehold.co/60x60/f9d97a/a80000?text=Cow+Logo+1'">
         </div>
 
         <div class="main-logo">
             <img src="res/logo.png"
-                    onerror="this.src='https://placehold.co/80x80/a80000/ffffff?text=LOGO'">
+                 onerror="this.src='https://placehold.co/80x80/a80000/ffffff?text=LOGO'">
         </div>
 
         <div class="side-logo-right">
             <img src="res/cow2.png"
-                    onerror="this.src='https://placehold.co/60x60/f9d97a/a80000?text=Cow+Logo+2'">
+                 onerror="this.src='https://placehold.co/60x60/f9d97a/a80000?text=Cow+Logo+2'">
         </div>
     </div>
 
@@ -330,22 +353,31 @@ body {
 
     </div>
 
+    <!-- FIXED WEBSITE BUTTON -->
     <a href="https://www.gausamman.cloud/" target="_blank" class="website-button">
-        <span class="mobile-text">🌐 Visit Official Website</span>
-        <span class="desktop-text">🌐 Visit Official Website - </span>
-        <br class="mobile-break">
-        <span class="url-text">www.gausamman.cloud</span>
+        <div class="website-inner">
+            <!-- Mobile Content -->
+            <div class="mobile-button-content">
+                <span>🌐 Visit Official Website</span>
+                <span class="url-text">www.gausamman.cloud</span>
+            </div>
+            <!-- Desktop Content -->
+            <div class="desktop-button-content">
+                <span>🌐 Visit Official Website -</span>
+                <span class="url-text">www.gausamman.cloud</span>
+            </div>
+        </div>
     </a>
 
     <div class="cow-footer-image">
         <img src="res/cow3.png" 
-            alt="A strip of six cows feeding their calves"
-            onerror="this.src='https://placehold.co/1500x120/f0f0f0/888888?text=Cow+Strip+Image'">
+             alt="A strip of six cows feeding their calves"
+             onerror="this.src='https://placehold.co/1500x120/f0f0f0/888888?text=Cow+Strip+Image'">
     </div>
+
 </div>
 
-<div class="bottom-cow-strip">
-    </div>
+<div class="bottom-cow-strip"></div>
 
 </body>
 </html>
