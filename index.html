@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE ahtml>
 <html lang="hi">
 <head>
 <meta charset="utf-8">
@@ -19,35 +19,234 @@
     100% { transform: translateX(-50%); }
 }
 
+/* UPDATED: New keyframe for 'Left-Right' (Horizontal Wobble) effect */
+@keyframes leftRightMotion {
+    0% { transform: translateX(-3px) scale(1); } /* Move left */
+    50% { transform: translateX(3px) scale(1.02); } /* Move right and slightly expand for dynamic look */
+    100% { transform: translateX(-3px) scale(1); } /* Move left */
+}
+
+
 /* --- General Styling --- */
 body {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    justify-content: flex-start; 
+    align-items: center; 
     min-height: 100vh;
     margin: 0;
     background-color: #f0f0f0;
     font-family: 'Inter', sans-serif;
-    padding: 20px;
+    /* CHANGED: Added padding to top the body content */
+    padding: 20px 0 0 0; 
     overflow-x: hidden;
 }
 
+/* ==================================================== */
+/* 1. TOP HEADER (Header has the solid red border) */
+/* ==================================================== */
+.gsa-header-main {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    background-color: #FFFFFF; 
+    /* UPDATED: Header padding as before */
+    padding: 5px 15px 5px 15px; 
+    width: 100%; 
+    /* CHANGED: Max-width added to match the main app container */
+    max-width: 360px; 
+    box-sizing: border-box;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* Stronger shadow for floating effect */
+    
+    /* === BORDER CHANGE (3px Sides, 1px Bottom) === */
+    /* UPDATED: साइड बॉर्डर 3px, नीचे का बॉर्डर 1px (जैसा मांगा गया) */
+    border-bottom: 1px solid #A80000; 
+    border-left: 3px solid #A80000; 
+    border-right: 3px solid #A80000;
+
+    /* ADDED: Top corners are now rounded */
+    border-top-left-radius: 20px; 
+    border-top-right-radius: 20px;
+    z-index: 20; /* Ensure header is above circles section */
+}
+
+.gsa-logo-wrapper-main {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0; 
+}
+
+.gsa-logo-main {
+    height: 70px; 
+    width: 70px; 
+    border-radius: 50%;
+    border: 3px solid #FFA000; 
+    margin-right: 15px; 
+    object-fit: cover;
+}
+
+.gsa-title-group-main {
+    text-align: left;
+    line-height: 1.1;
+    /* REMOVED: white-space: nowrap, overflow: hidden, and text-overflow: ellipsis */
+    /* UPDATED: Text को कटने से बचाने के लिए wrapping की अनुमति दी गई है */
+    flex-grow: 1; 
+}
+
+.gsa-title-main {
+    /* INCREASED SIZE: 28px -> 32px max */
+    font-size: clamp(22px, 5.5vw, 32px); 
+    font-weight: 900; 
+    display: block; 
+}
+
+.gsa-title-red-main { 
+    color: #A03B00; 
+} 
+.gsa-title-brown-main { 
+    color: #5D3A00; 
+    /* INCREASED SIZE: 26px -> 30px max */
+    font-size: clamp(20px, 5vw, 30px); 
+    font-weight: 800; 
+} 
+
+/* Removed hamburger icon styling as it's removed from HTML */
+.gsa-hamburger-icon {
+    display: none;
+}
+
+
+/* ==================================================== */
+/* 2. ANIMATED CIRCLES SECTION (Hanging Effect - Hyper Compact) */
+/* ==================================================== */
+.gsa-circles-section {
+    /* CHANGED: Background color set to white to match the main app container */
+    background-color: white; 
+    padding: 0 0; 
+    overflow: hidden; 
+    width: 100%;
+    box-sizing: border-box;
+    /* CHANGED: Max-width added to match the main app container */
+    max-width: 360px; 
+    
+    /* CHANGED: Top and bottom borders removed for seamless connection */
+    border-bottom: none; 
+    border-top: none; 
+    /* === BORDER CHANGE (3px Sides) === */
+    /* UPDATED: साइड बॉर्डर 3px */
+    border-left: 3px solid #A80000;
+    border-right: 3px solid #A80000;
+    
+    /* UPDATED: Negative margin -8px for sticky/cut circle effect */
+    margin-top: -8px; 
+    margin-bottom: 0px; 
+}
+
+.gsa-circle-row {
+    display: flex;
+    /* UPDATED: Circles को चौड़ाई में पूरी तरह फैलाने के लिए */
+    justify-content: space-around; 
+    align-items: center;
+    /* ADDED: Vertical padding for equal gap between rows (lambai me gap) */
+    padding: 3px 0; 
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.gsa-circle {
+    /* UPDATED: Circle साइज़ 20px (16px से बढ़ा दिया गया) */
+    width: 20px; 
+    height: 20px; 
+    flex-shrink: 0; 
+    background-color: #FFA500; 
+    border-radius: 50%;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    position: relative;
+    
+    /* UPDATED: Apply the new horizontal motion by default */
+    animation: leftRightMotion 1.5s infinite alternate ease-in-out; 
+    
+    /* UPDATED: Horizontal Margin (chhodai me gap) */
+    margin: 0 4px; 
+}
+
+/* NEW: Third Row Circles - Reverse the animation direction for the second part of the motion */
+.gsa-circle-row:nth-child(3) .gsa-circle {
+    animation-direction: alternate-reverse; 
+}
+
+/* UPDATED: Animation Delays - Increment reduced to 0.1s for faster traveling wave/ripple effect */
+/* Delay logic is the same and applies to both forward and reverse motion to create the wave effect */
+.gsa-circle:nth-child(10n + 1) { animation-delay: 0s; }
+.gsa-circle:nth-child(10n + 2) { animation-delay: 0.1s; } 
+.gsa-circle:nth-child(10n + 3) { animation-delay: 0.2s; } 
+.gsa-circle:nth-child(10n + 4) { animation-delay: 0.3s; } 
+.gsa-circle:nth-child(10n + 5) { animation-delay: 0.4s; } 
+.gsa-circle:nth-child(10n + 6) { animation-delay: 0.5s; } 
+.gsa-circle:nth-child(10n + 7) { animation-delay: 0.6s; } 
+.gsa-circle:nth-child(10n + 8) { animation-delay: 0.7s; } 
+.gsa-circle:nth-child(10n + 9) { animation-delay: 0.8s; } 
+.gsa-circle:nth-child(10n + 10) { animation-delay: 0.9s; } 
+
+
+/* ==================================================== */
+/* 3. MAIN APP CONTAINER (Original Content) */
+/* ==================================================== */
 .app-container {
     width: 100%;
-    max-width: 360px;
+    max-width: 360px; 
     background-color: white;
-    padding: 30px 20px;
+    padding: 20px 20px; 
     border-radius: 20px;
+    /* CHANGED: Removed top radius and border to stack with circles section */
+    border-top-left-radius: 0; 
+    border-top-right-radius: 0;
     box-shadow: 0 8px 20px rgba(0,0,0,0.1);
     text-align: center;
-    border: 3px solid #FF9933;
+    
+    /* === BORDER CHANGE (3px Sides, 1px Bottom) === */
+    /* UPDATED: 3px साइड बॉर्डर, 1px नीचे का बॉर्डर */
+    border: none; /* Resetting combined border */
+    border-left: 3px solid #A80000;
+    border-right: 3px solid #A80000;
+    border-bottom: 1px solid #A80000; 
+    border-top: none; 
     box-sizing: border-box;
-    margin-bottom: 0; 
+    margin-bottom: 20px; 
+    /* CHANGED: Removed negative margin to stack cleanly */
+    margin-top: 0; 
     z-index: 10;
 }
 
-/* --- Header Logos --- */
+/* --- Continuous Marquee (Moved inside app-container) --- */
+.marquee-container {
+    overflow: hidden;
+    white-space: nowrap;
+    width: 100%; 
+    margin: 25px 0 40px 0; 
+    background-color: transparent; 
+    padding: 0; 
+    box-shadow: none; 
+}
+
+.marquee-track {
+    display: flex;
+    width: max-content;
+    /* RESTORED: Increased duration for slower, longer flow (30s) */
+    animation: marqueeFlow 30s linear infinite; 
+}
+
+.marquee-item {
+    /* UPDATED: Font size 24px */
+    font-size: 24px; 
+    font-weight: 900;
+    color: #a80000; 
+    /* UPDATED: Padding 10px */
+    padding-right: 10px;  
+    white-space: nowrap; 
+}
+
+/* --- Header Logos (Original - ab app-container ke andar) --- */
 .logo-container {
     margin-bottom: 20px;
     display: flex;
@@ -102,35 +301,12 @@ body {
     box-sizing: border-box;
 }
 
-/* --- Continuous Marquee --- */
-.marquee-container {
-    overflow: hidden;
-    white-space: nowrap;
-    width: 100%;
-    margin-bottom: 40px;
-    margin-top: 25px;
-}
-
-.marquee-track {
-    display: flex;
-    width: max-content;
-    animation: marqueeFlow 12s linear infinite; 
-}
-
-.marquee-item {
-    font-size: 24px;
-    font-weight: 900;
-    color: #a80000;
-    padding-right: 8px;  
-    white-space: nowrap; 
-}
-
-/* Social Icons */
+/* Social Icons (Existing) */
 .social-icons {
     display: grid;
     grid-template-columns: repeat(3,1fr);
     gap: 20px;
-    margin-bottom: 50px;
+    margin-bottom: 40px;
 }
 
 .social-icons a {
@@ -182,10 +358,11 @@ body {
     align-items:center;
 }
 
-/* --- Website Button --- */
+/* --- Website Button (Existing) --- */
 .website-button {
     display: inline-block;
-    border: 3px solid #FF9933;
+    /* बॉर्डर 1px ही रहेगा */
+    border: 1px solid #A80000;
     background-color: #a80000;
     color: white;
     padding: 10px 20px;
@@ -193,7 +370,7 @@ body {
     text-decoration: none;
     font-size: 14px;
     font-weight: bold;
-    margin-top: 20px;
+    margin-top: 10px;
     margin-bottom: 20px;
     position: relative;
     overflow: hidden;
@@ -214,14 +391,39 @@ body {
 .mobile-break { display:block; }
 
 @media(min-width:768px){
-    .app-container { max-width:500px; padding:40px 30px; }
+    /* === DESKTOP BORDER CHANGE (3px Sides, 1px Bottom) === */
+    .gsa-header-main { 
+        max-width: 500px; 
+        padding: 10px 30px 15px 30px; 
+        border-left: 3px solid #A80000;  /* Changed to 3px */
+        border-right: 3px solid #A80000; /* Changed to 3px */
+        border-bottom: 1px solid #A80000; /* Kept at 1px */
+    }
+    .gsa-circles-section { 
+        max-width: 500px; 
+        border-left: 3px solid #A80000;  /* Changed to 3px */
+        border-right: 3px solid #A80000; /* Changed to 3px */
+        border-top: none; 
+        border-bottom: none; 
+    }
+    .app-container { 
+        max-width:500px; 
+        padding:40px 30px; 
+        padding-top: 20px; 
+        /* UPDATED: Individual settings for 3px sides, 1px bottom */
+        border: none; /* Resetting combined border */
+        border-left: 3px solid #A80000;
+        border-right: 3px solid #A80000;
+        border-bottom: 1px solid #A80000; /* Keeping the bottom thin */
+        border-top: none; 
+    }
     .website-button { white-space: nowrap; }
     .mobile-text { display:none; }
     .desktop-text { display:inline; }
     .mobile-break { display:none; }
 }
 
-/* --- Cow Strip --- */
+/* --- Cow Strip (Existing) */
 .cow-footer-image {
     width: 100%;
     margin-top: 10px;
@@ -246,9 +448,62 @@ body {
 
 <body>
 
-<div class="app-container">
+    <!-- 1. TOP HEADER (Header has the solid red border) --><div class="gsa-header-main">
+        <div class="gsa-logo-wrapper-main">
+            <img src="res/logo.png"
+                 onerror="this.src='https://placehold.co/70x70/FFA000/A03B00?text=LOGO'"
+                 alt="गो सम्मान आहान अभियान Logo" class="gsa-logo-main">
+            <div class="gsa-title-group-main">
+                <span class="gsa-title-main gsa-title-red-main">गो सम्मान</span>
+                <span class="gsa-title-main gsa-title-brown-main">आहान अभियान</span>
+            </div>
+        </div>
+        <!-- Hamburger Icon removed as requested --></div>
 
-    <div class="logo-container">
+    <!-- 2. ANIMATED CIRCLES SECTION (Hanging Effect - Hyper Compact) --><div class="gsa-circles-section">
+        <!-- Group 1: Row 1 (Left-Right Wave - Forward) --><div class="gsa-circle-row">
+            <div class="gsa-circle"></div>
+            <div class="gsa-circle"></div>
+            <div class="gsa-circle"></div>
+            <div class="gsa-circle"></div>
+            <div class="gsa-circle"></div>
+            <div class="gsa-circle"></div>
+            <div class="gsa-circle"></div>
+            <div class="gsa-circle"></div>
+            <div class="gsa-circle"></div>
+            <div class="gsa-circle"></div>
+        </div>
+        
+        <!-- Group 1: Row 2 (Left-Right Wave - Forward) --><div class="gsa-circle-row">
+            <div class="gsa-circle"></div>
+            <div class="gsa-circle"></div>
+            <div class="gsa-circle"></div>
+            <div class="gsa-circle"></div>
+            <div class="gsa-circle"></div>
+            <div class="gsa-circle"></div>
+            <div class="gsa-circle"></div>
+            <div class="gsa-circle"></div>
+            <div class="gsa-circle"></div>
+            <div class="gsa-circle"></div>
+        </div>
+        
+        <!-- Group 2: Row 3 (Left-Right Wave - Reverse) --><div class="gsa-circle-row">
+            <div class="gsa-circle"></div>
+            <div class="gsa-circle"></div>
+            <div class="gsa-circle"></div>
+            <div class="gsa-circle"></div>
+            <div class="gsa-circle"></div>
+            <div class="gsa-circle"></div>
+            <div class="gsa-circle"></div>
+            <div class="gsa-circle"></div>
+            <div class="gsa-circle"></div>
+            <div class="gsa-circle"></div>
+        </div>
+    </div>
+
+<!-- 3. MAIN APP CONTAINER (Original Content) --><div class="app-container">
+
+    <!-- Original Logo Container (ab use ho raha hai) --><div class="logo-container">
         <div class="side-logo-left">
             <img src="res/cow1.png"
                  onerror="this.src='https://placehold.co/60x60/f9d97a/a80000?text=Cow+Logo+1'">
@@ -264,17 +519,18 @@ body {
                  onerror="this.src='https://placehold.co/60x60/f9d97a/a80000?text=Cow+Logo+2'">
         </div>
     </div>
-
-    <div class="marquee-container">
+    
+    <!-- Marquee Container is now inside the app-container --><div class="marquee-container">
         <div class="marquee-track">
-            <div class="marquee-item">
+            <!-- Restored: Increased repetition for "Lamba" effect --><div class="marquee-item">
                 ॐ गौ सम्मान आह्वान अभियान 🚩 🐄 ॐ गौ सम्मान आह्वान अभियान 🚩 🐄 ॐ गौ सम्मान आह्वान अभियान 🚩🐄 ॐ गौ सम्मान आह्वान अभियान 🚩 🐄
             </div>
-            <div class="marquee-item">
+            <!-- Restored: Increased repetition for "Lamba" effect --><div class="marquee-item">
                 ॐ गौ सम्मान आह्वान अभियान 🚩 🐄 ॐ गौ सम्मान आह्वान अभियान 🚩 🐄 ॐ गौ सम्मान आह्वान अभियान 🚩 🐄 ॐ गौ सम्मान आह्वान अभियान 🚩 🐄
             </div>
         </div>
     </div>
+
 
     <div class="social-icons">
         <a href="mailto:gausamman@gmail.com">
@@ -303,11 +559,9 @@ body {
         </a>
         <a href="https://www.facebook.com/profile.php?id=61583545206576" target="_blank">
             <div class="icon-wrapper icon-facebook"><i class="fab fa-facebook-f"></i></div>
-        </a>
-    </div>
+        </div>
 
-    <!-- FIXED WEBSITE BUTTON -->
-    <a href="https://www.gausamman.cloud/" target="_blank" class="website-button">
+    <!-- FIXED WEBSITE BUTTON --><a href="https://www.gausamman.cloud/" target="_blank" class="website-button">
         <span class="mobile-text">🌐 Visit Official Website</span>
         <span class="desktop-text">🌐 Visit Official Website - </span>
         <br class="mobile-break">
@@ -325,4 +579,4 @@ body {
 <div class="bottom-cow-strip"></div>
 
 </body>
-</html>
+</html> 
