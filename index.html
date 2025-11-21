@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+    <!DOCTYPE html>
 <html lang="hi">
 <head>
 <meta charset="utf-8">
@@ -7,19 +7,6 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 
 <style>
-
-/* --- Animation Keyframes --- */
-@keyframes pulse {
-    0% { transform: scale(1); box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
-    50% { transform: scale(1.08); box-shadow: 0 8px 20px rgba(0,0,0,0.5); }
-    100% { transform: scale(1); box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
-}
-
-/* PERFECT SMOOTH MARQUEE — NO JHATKA */
-@keyframes marqueeFlow {
-    0%    { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
-}
 
 /* --- General Styling --- */
 body {
@@ -45,11 +32,9 @@ body {
     text-align: center;
     border: 3px solid #FF9933;
     box-sizing: border-box;
-    margin-bottom: 0; 
-    z-index: 10;
 }
 
-/* --- Header Logos --- */
+/* Header Logos */
 .logo-container {
     margin-bottom: 20px;
     display: flex;
@@ -58,63 +43,28 @@ body {
     gap: 50px;
 }
 
-/* Main logo fix */
-.main-logo {
-    width: 80px;
-    height: 80px;
+.main-logo, .side-logo-left, .side-logo-right {
+    border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
     overflow: hidden;
-    border-radius: 50%;
-    background-color: black; 
     padding: 2px;
     box-sizing: border-box;
 }
 
-.main-logo img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 50%;
-    border: 2px solid gold;
-    display: block;
-    box-sizing: border-box;
-}
+.main-logo { width: 80px; height: 80px; background-color: black; }
+.main-logo img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; border: 2px solid gold; }
 
-/* Side logos fix — black circle above golden */
-.side-logo-left, .side-logo-right {
-    width: 60px;
-    height: 60px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50%;
-    background-color: black; 
-    padding: 2px; 
-    box-sizing: border-box;
-}
+.side-logo-left, .side-logo-right { width: 60px; height: 60px; background-color: black; }
+.side-logo-left img, .side-logo-right img { width: 100%; height: 100%; object-fit: contain; border-radius: 50%; border: 2px solid #f9d97a; background-color: #fff; }
 
-.side-logo-left img, .side-logo-right img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    border-radius: 50%;
-    border: 2px solid #f9d97a; 
-    background-color: #ffffff;
-    display: block;
-    box-sizing: border-box;
-}
-
-/* ===============================
-    CONTINUOUS MARQUEE
-    =============================== */
+/* Marquee */
 .marquee-container {
     overflow: hidden;
     white-space: nowrap;
     width: 100%;
-    margin-bottom: 40px;
-    margin-top: 25px;
+    margin: 25px 0 40px 0;
 }
 
 .marquee-track {
@@ -131,72 +81,22 @@ body {
     white-space: nowrap; 
 }
 
-/* Hide headers */
-.header-text, .subheader-text { display: none; }
+@keyframes marqueeFlow { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
-/* Social Icons Grid */
+/* Social Icons */
 .social-icons {
     display: grid;
     grid-template-columns: repeat(3,1fr);
     gap: 20px;
     margin-bottom: 50px;
 }
+.icon-wrapper { width: 50px; height: 50px; display:flex; justify-content:center; align-items:center; border-radius:50%; background:#fff; border:1px solid #ccc; box-shadow:0 1px 3px rgba(0,0,0,0.05);}
+.connect-us { font-size:12px; font-weight:bold; background:#a80000; color:#fff; width:60px; height:60px; border-radius:50px; display:flex; flex-direction:column; justify-content:center; align-items:center; }
 
-.social-icons a {
-    text-decoration: none;
-    display: block;
-    transition: transform 0.2s ease-in-out;
-    justify-self: center;
-}
-
-.social-icons a:hover,
-.social-icons a:focus {
-    transform: scale(1.1);
-}
-
-.icon-wrapper {
-    width: 50px;
-    height: 50px;
-    background-color: #fff;
-    border-radius: 50%;
-    border: 1px solid #ccc;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-}
-
-.icon-wrapper i { font-size: 30px; }
-
-.icon-apple i { color:#888; }
-.icon-whatsapp i { color:#25D366; }
-.icon-youtube i { color:#FF0000; }
-.icon-spotify i { color:#1DB954; }
-.icon-mail i { color:#D44638; }
-.icon-twitter i { color:#1DA1F2; }
-.icon-instagram i { color:#C13584; }
-.icon-facebook i { color:#1877F2; }
-
-/* Connect Button */
-.connect-us {
-    background-color:#a80000;
-    color:white;
-    font-size:12px;
-    font-weight:bold;
-    border-radius:50px;
-    width:60px;
-    height:60px;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-}
-
-/* ===============================
-    VISIT WEBSITE BUTTON FIXED
-    =============================== */
+/* Website Button */
 .website-button {
-    width: 90%;
+    width: 100%; /* Desktop ke liye full width */
+    max-width: 400px; /* Lamba text fit ho jaye */
     margin: 30px auto;
     padding: 18px 10px;
     background: #b30000;
@@ -205,11 +105,10 @@ body {
     box-shadow: 0 10px 25px rgba(0,0,0,0.25);
     font-weight: bold;
     animation: zoom 2.2s infinite ease-in-out;
-    transform-origin: center center;
     display: flex;
     justify-content: center;
     align-items: center;
-    text-decoration: none; /* Extra underline removed */
+    text-decoration: none;
 }
 
 .website-inner {
@@ -223,58 +122,31 @@ body {
 .url-text { 
     color:#ffccb3; 
     font-size: 14px; 
-    display: inline-block; 
-    text-decoration: none; 
-    white-space: nowrap; /* Prevent line break */
+    white-space: nowrap; /* prevent wrapping */
 }
 
-/* Hide both by default */
+/* Mobile/Desktop content */
 .mobile-button-content, .desktop-button-content { display: none; }
 
-/* Mobile view */
 @media(max-width:767px){
-    .mobile-button-content { 
-        display: flex; 
-        flex-direction: column; 
-        align-items: center; 
-    }
+    .mobile-button-content { display: flex; flex-direction: column; align-items: center; }
 }
 
-/* Desktop view */
 @media(min-width:768px){
     .desktop-button-content { 
         display: flex; 
         flex-direction: row; 
         align-items: center; 
         gap:5px; 
-        flex-wrap: nowrap; /* Prevent wrapping to next line */
+        flex-wrap: nowrap; /* prevent line break */
     }
 }
 
-@keyframes zoom {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.05); }
-    100% { transform: scale(1); }
-}
+@keyframes zoom { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
 
-/* Cow Strip inside container */
-.cow-footer-image {
-    width: 100%; 
-    margin-top: 10px; 
-    margin-bottom: -40px; 
-    position: relative;
-    overflow: hidden;
-}
-
-.cow-footer-image img {
-    width: 300%; 
-    max-width: 300%;
-    height: auto;
-    display: block;
-    transform: translateX(-33%); 
-    object-fit: cover;
-}
-
+/* Cow strip */
+.cow-footer-image { width: 100%; margin: 10px 0 -40px 0; overflow: hidden; position: relative; }
+.cow-footer-image img { width: 300%; max-width:300%; transform: translateX(-33%); object-fit: cover; display:block; }
 .bottom-cow-strip { display: none; }
 
 </style>
@@ -286,84 +158,44 @@ body {
 
     <div class="logo-container">
         <div class="side-logo-left">
-            <img src="res/cow1.png"
-                 onerror="this.src='https://placehold.co/60x60/f9d97a/a80000?text=Cow+Logo+1'">
+            <img src="res/cow1.png" onerror="this.src='https://placehold.co/60x60/f9d97a/a80000?text=Cow+Logo+1'">
         </div>
 
         <div class="main-logo">
-            <img src="res/logo.png"
-                 onerror="this.src='https://placehold.co/80x80/a80000/ffffff?text=LOGO'">
+            <img src="res/logo.png" onerror="this.src='https://placehold.co/80x80/a80000/ffffff?text=LOGO'">
         </div>
 
         <div class="side-logo-right">
-            <img src="res/cow2.png"
-                 onerror="this.src='https://placehold.co/60x60/f9d97a/a80000?text=Cow+Logo+2'">
+            <img src="res/cow2.png" onerror="this.src='https://placehold.co/60x60/f9d97a/a80000?text=Cow+Logo+2'">
         </div>
     </div>
 
     <div class="marquee-container">
         <div class="marquee-track">
-
-            <div class="marquee-item">
-                ॐ गौ सम्मान आह्वान अभियान 🚩 🐄 ॐ गौ सम्मान आह्वान अभियान 🚩 🐄 ॐ गौ सम्मान आह्वान अभियान 🚩🐄 ॐ गौ सम्मान आह्वान अभियान 🚩 🐄
-            </div>
-
-            <div class="marquee-item">
-                ॐ गौ सम्मान आह्वान अभियान 🚩 🐄 ॐ गौ सम्मान आह्वान अभियान 🚩 🐄 ॐ गौ सम्मान आह्वान अभियान 🚩 🐄 ॐ गौ सम्मान आह्वान अभियान 🚩 🐄
-            </div>
-
+            <div class="marquee-item">ॐ गौ सम्मान आह्वान अभियान 🚩 🐄 ॐ गौ सम्मान आह्वान अभियान 🚩 🐄 ॐ गौ सम्मान आह्वान अभियान 🚩🐄 ॐ गौ सम्मान आह्वान अभियान 🚩 🐄</div>
+            <div class="marquee-item">ॐ गौ सम्मान आह्वान अभियान 🚩 🐄 ॐ गौ सम्मान आह्वान अभियान 🚩 🐄 ॐ गौ सम्मान आह्वान अभियान 🚩 🐄 ॐ गौ सम्मान आह्वान अभियान 🚩 🐄</div>
         </div>
     </div>
 
     <div class="social-icons">
-
-        <a href="mailto:gausamman@gmail.com">
-            <div class="icon-wrapper icon-apple"><i class="fab fa-apple"></i></div>
-        </a>
-
-        <a href="https://chat.whatsapp.com/EJKog7pvLFGLx7mzrts656" target="_blank">
-            <div class="icon-wrapper icon-whatsapp"><i class="fab fa-whatsapp"></i></div>
-        </a>
-
-        <a href="https://www.youtube.com/@Gausammanaahvaanabhiyaan" target="_blank">
-            <div class="icon-wrapper icon-youtube"><i class="fab fa-youtube"></i></div>
-        </a>
-
-        <a href="https://open.spotify.com/user/31hpaxs5skl43g65frugwkxyzfwm" target="_blank">
-            <div class="icon-wrapper icon-spotify"><i class="fab fa-spotify"></i></div>
-        </a>
-
-        <a href="https://www.gausamman.cloud/" target="_blank">
-            <div class="icon-wrapper connect-us">Connect<br>Us</div>
-        </a>
-
-        <a href="mailto:GSAabhiyan2027@gmail.com">
-            <div class="icon-wrapper icon-mail"><i class="fas fa-envelope"></i></div>
-        </a>
-
-        <a href="https://twitter.com/GSAA2027" target="_blank">
-            <div class="icon-wrapper icon-twitter"><i class="fab fa-x-twitter"></i></div>
-        </a>
-
-        <a href="https://www.instagram.com/gausmmaanaahvaan/" target="_blank">
-            <div class="icon-wrapper icon-instagram"><i class="fab fa-instagram"></i></div>
-        </a>
-
-        <a href="https://www.facebook.com/profile.php?id=61583545206576" target="_blank">
-            <div class="icon-wrapper icon-facebook"><i class="fab fa-facebook-f"></i></div>
-        </a>
-
+        <a href="mailto:gausamman@gmail.com"><div class="icon-wrapper icon-apple"><i class="fab fa-apple"></i></div></a>
+        <a href="https://chat.whatsapp.com/EJKog7pvLFGLx7mzrts656" target="_blank"><div class="icon-wrapper icon-whatsapp"><i class="fab fa-whatsapp"></i></div></a>
+        <a href="https://www.youtube.com/@Gausammanaahvaanabhiyaan" target="_blank"><div class="icon-wrapper icon-youtube"><i class="fab fa-youtube"></i></div></a>
+        <a href="https://open.spotify.com/user/31hpaxs5skl43g65frugwkxyzfwm" target="_blank"><div class="icon-wrapper icon-spotify"><i class="fab fa-spotify"></i></div></a>
+        <a href="https://www.gausamman.cloud/" target="_blank"><div class="icon-wrapper connect-us">Connect<br>Us</div></a>
+        <a href="mailto:GSAabhiyan2027@gmail.com"><div class="icon-wrapper icon-mail"><i class="fas fa-envelope"></i></div></a>
+        <a href="https://twitter.com/GSAA2027" target="_blank"><div class="icon-wrapper icon-twitter"><i class="fab fa-x-twitter"></i></div></a>
+        <a href="https://www.instagram.com/gausmmaanaahvaan/" target="_blank"><div class="icon-wrapper icon-instagram"><i class="fab fa-instagram"></i></div></a>
+        <a href="https://www.facebook.com/profile.php?id=61583545206576" target="_blank"><div class="icon-wrapper icon-facebook"><i class="fab fa-facebook-f"></i></div></a>
     </div>
 
-    <!-- FIXED WEBSITE BUTTON -->
+    <!-- Website Button -->
     <a href="https://www.gausamman.cloud/" target="_blank" class="website-button">
         <div class="website-inner">
-            <!-- Mobile Content -->
             <div class="mobile-button-content">
                 <span>🌐 Visit Official Website</span>
                 <span class="url-text">www.gausamman.cloud</span>
             </div>
-            <!-- Desktop Content -->
             <div class="desktop-button-content">
                 <span>🌐 Visit Official Website -</span>
                 <span class="url-text">www.gausamman.cloud</span>
@@ -372,9 +204,7 @@ body {
     </a>
 
     <div class="cow-footer-image">
-        <img src="res/cow3.png" 
-             alt="A strip of six cows feeding their calves"
-             onerror="this.src='https://placehold.co/1500x120/f0f0f0/888888?text=Cow+Strip+Image'">
+        <img src="res/cow3.png" onerror="this.src='https://placehold.co/1500x120/f0f0f0/888888?text=Cow+Strip+Image'">
     </div>
 
 </div>
@@ -382,4 +212,4 @@ body {
 <div class="bottom-cow-strip"></div>
 
 </body>
-</html>
+</html>    
