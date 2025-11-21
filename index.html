@@ -148,15 +148,80 @@ body {
     line-height: 1.5; /* Adjusted for better spacing */
 }
 
-/* --- Marquee, Logos, Social Icons, Buttons (User's Original Code - CSS kept as is) --- */
+/* --- Marquee, Logos, Social Icons, Buttons --- */
 .marquee-container { overflow: hidden; white-space: nowrap; width: 100%; margin: 25px 0 40px 0; background-color: transparent; padding: 0; box-shadow: none; }
 .marquee-track { display: flex; width: max-content; animation: marqueeFlow 12s linear infinite; }
 .marquee-item { font-size: 24px; font-weight: 900; color: #a80000; padding-right: 10px; white-space: nowrap; }
 .social-icons { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; margin-bottom: 40px; }
 .social-icons a { text-decoration: none; display: block; transition: transform 0.2s ease-in-out; justify-self: center; }
-.icon-wrapper { width: 50px; height: 50px; background-color: #fff; border-radius: 50%; border: 1px solid #ccc; display: flex; justify-content: center; align-items: center; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
-.icon-wrapper i { font-size: 30px; }
-.connect-us { background-color:#a80000; color:white; font-size:12px; font-weight:bold; border-radius:50px; width:60px; height:60px; display:flex; flex-direction:column; justify-content:center; align-items:center; }
+
+/* --- SHARED ICON STYLES (New) --- */
+/* Unify size, add shadow, transition, and white text/icon color */
+.icon-wrapper, .connect-us { 
+    width: 55px; /* Unified size for all icons/buttons */
+    height: 55px; 
+    border-radius: 50%;
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    color: white; /* Make icon and text color white for contrast */
+    font-size: 13px;
+    font-weight: bold;
+    /* Added bright border */
+    border: 2px solid #FF9933; 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4); /* Stronger general shadow */
+    transition: transform 0.2s ease;
+}
+
+.icon-wrapper:hover, .connect-us:hover {
+    transform: scale(1.08); /* Unified hover effect */
+    /* Hover effect: Increase shadow and border visibility */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5); 
+}
+.icon-wrapper i { font-size: 30px; } /* Keep icon size */
+
+
+/* --- INDIVIDUAL ICON STYLES (New Gradients) --- */
+.icon-apple { 
+    background: linear-gradient(45deg, #9E9E9E, #5D5D5D); 
+    /* box-shadow: 0 4px 10px rgba(93, 93, 93, 0.4); Removed individual shadows for shared shadow */
+}
+.icon-whatsapp { 
+    background: linear-gradient(45deg, #25D366, #1DA851); 
+    /* box-shadow: 0 4px 10px rgba(37, 211, 102, 0.5); Removed individual shadows for shared shadow */
+}
+.icon-youtube { 
+    background: linear-gradient(45deg, #FF0000, #C40000); 
+    /* box-shadow: 0 4px 10px rgba(255, 0, 0, 0.5); Removed individual shadows for shared shadow */
+}
+.icon-spotify { 
+    background: linear-gradient(45deg, #1DB954, #158F40); 
+    /* box-shadow: 0 4px 10px rgba(29, 185, 84, 0.5); Removed individual shadows for shared shadow */
+}
+.connect-us { 
+    /* Join Us gradient (retained but size unified) */
+    background: linear-gradient(135deg, #FF9933 0%, #A80000 100%); 
+    /* box-shadow: 0 4px 10px rgba(168, 0, 0, 0.5); Removed individual shadows for shared shadow */
+}
+.icon-mail { 
+    background: linear-gradient(45deg, #A80000, #7A0000); 
+    /* box-shadow: 0 4px 10px rgba(168, 0, 0, 0.5); Removed individual shadows for shared shadow */
+}
+.icon-twitter { 
+    background: linear-gradient(45deg, #1D9BF0, #000000); 
+    /* box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); Removed individual shadows for shared shadow */
+}
+.icon-instagram { 
+    /* Classic Instagram Gradient */
+    background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #405de6 90%); 
+    /* box-shadow: 0 4px 10px rgba(193, 53, 132, 0.5); Removed individual shadows for shared shadow */
+}
+.icon-facebook { 
+    background: linear-gradient(45deg, #1877F2, #145DB0); 
+    /* box-shadow: 0 4px 10px rgba(24, 119, 242, 0.5); Removed individual shadows for shared shadow */
+}
+
+
 .website-button { display: inline-block; border: 3px solid #FF9933; background-color: #a80000; color: white; padding: 10px 20px; border-radius: 25px; text-decoration: none; font-size: 14px; font-weight: bold; margin-top: 10px; margin-bottom: 20px; position: relative; overflow: hidden; animation: pulse 1.2s infinite ease-in-out; text-align: center; }
 .url-text { color:#ffccb3; }
 .mobile-text { display:inline; }
@@ -235,31 +300,31 @@ body {
 
     <div class="social-icons">
         <a href="mailto:gausamman@gmail.com" target="_blank">
-            <div class="icon-wrapper icon-mail"><i class="fas fa-envelope" style="color:#D44638;"></i></div>
+            <div class="icon-wrapper icon-apple"><i class="fab fa-apple"></i></div>
         </a>
         <a href="https://wa.me/918239711008?text=I+want+to+join+Gau+Samman+Aahvaan+Abhiyaan" target="_blank">
-            <div class="icon-wrapper icon-whatsapp"><i class="fab fa-whatsapp" style="color:#25D366;"></i></div>
+            <div class="icon-wrapper icon-whatsapp"><i class="fab fa-whatsapp"></i></div>
         </a>
         <a href="https://www.youtube.com/@Gausammanaahvaanabhiyaan" target="_blank">
-            <div class="icon-wrapper icon-youtube"><i class="fab fa-youtube" style="color:#FF0000;"></i></div>
+            <div class="icon-wrapper icon-youtube"><i class="fab fa-youtube"></i></div>
         </a>
         <a href="https://open.spotify.com/user/31hpaxs5skl43g65frugwkxyzfwm" target="_blank">
-            <div class="icon-wrapper icon-spotify"><i class="fab fa-spotify" style="color:#1DB954;"></i></div>
+            <div class="icon-wrapper icon-spotify"><i class="fab fa-spotify"></i></div>
         </a>
         <a href="https://www.gausamman.cloud/" target="_blank">
             <div class="icon-wrapper connect-us">Join<br>Us</div>
         </a>
         <a href="mailto:GSAabhiyan2027@gmail.com" target="_blank">
-            <div class="icon-wrapper icon-mail" style="background-color: #ffccb3; border-color: #A80000;"><i class="fas fa-envelope" style="color:#A80000;"></i></div>
+            <div class="icon-wrapper icon-mail"><i class="fas fa-envelope"></i></div>
         </a>
         <a href="https://twitter.com/GSAA2027" target="_blank">
-            <div class="icon-wrapper icon-twitter"><i class="fab fa-x-twitter" style="color:#1DA1F2;"></i></div>
+            <div class="icon-wrapper icon-twitter"><i class="fab fa-x-twitter"></i></div>
         </a>
         <a href="https://www.instagram.com/gausmmaanaahvaan/" target="_blank">
-            <div class="icon-wrapper icon-instagram"><i class="fab fa-instagram" style="color:#C13584;"></i></div>
+            <div class="icon-wrapper icon-instagram"><i class="fab fa-instagram"></i></div>
         </a>
         <a href="https://www.facebook.com/profile.php?id=61583545206576" target="_blank">
-            <div class="icon-wrapper icon-facebook"><i class="fab fa-facebook-f" style="color:#1877F2;"></i></div>
+            <div class="icon-wrapper icon-facebook"><i class="fab fa-facebook-f"></i></div>
         </a>
     </div>
 
@@ -280,7 +345,4 @@ body {
 
 </body>
 </html>
-
-
-
 
