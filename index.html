@@ -208,41 +208,34 @@ body {
     margin-top: 20px;
     margin-bottom: 20px;
     position: relative;
-    overflow: hidden;          /* text hilne se bachane ke liye */
+    overflow: hidden;
+    animation: pulse 1.2s infinite ease-in-out; /* Zoom animation */
 }
 
-/* Create a pseudo element for background pulse */
-.website-button::before {
-    content: "";
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    border-radius: 25px;
-    background-color: #a80000;
-    z-index: 0;
-    animation: pulse 1.2s infinite ease-in-out;
+.website-button:hover {
+    background-color: #880000;
 }
 
-/* Text stays on top */
+/* Text inside stays relative to avoid floating */
 .website-button span {
     position: relative;
     z-index: 1;
 }
 
-/* Hover effect */
-.website-button:hover::before {
-    background-color: #880000;
-}
-
+/* URL color */
 .url-text { color: #ffccb3; }
 
-.mobile-text { display: inline; }
-.desktop-text { display: none; }
-.mobile-break { display: block; }
+/* Mobile text */
+.mobile-text { display:inline; }
+.desktop-text { display:none; }
+.mobile-break { display:block; }
 
+/* Desktop view */
 @media(min-width:768px){
-    .mobile-text { display: none; }
-    .desktop-text { display: inline; }
-    .mobile-break { display: none; }
+    .mobile-text { display:none; }
+    .desktop-text { display:inline; }
+    .mobile-break { display:none; }
+    .website-button { white-space: nowrap; } /* Single line force */
 }
 
 @keyframes pulse {
