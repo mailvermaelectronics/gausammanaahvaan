@@ -196,35 +196,59 @@ body {
 
 /* Website Button */
 .website-button {
-    display:inline-block;
+    display: inline-block;
     border: 2px solid #FF9933;
-    background-color:#a80000;
-    color:white;
-    padding:10px 20px;
-    border-radius:25px;
-    text-decoration:none;
-    font-size:14px;
-    box-shadow:0 2px 5px rgba(0,0,0,0.2);
-    font-weight:bold;
-    margin-top:20px;
-    margin-bottom: 20px; /* Added margin below button */
-    animation:pulse 1s infinite ease-in-out;
+    background-color: #a80000;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    position: relative;
+    overflow: hidden;          /* text hilne se bachane ke liye */
 }
 
-.website-button:hover { background-color:#880000; }
+/* Create a pseudo element for background pulse */
+.website-button::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    border-radius: 25px;
+    background-color: #a80000;
+    z-index: 0;
+    animation: pulse 1.2s infinite ease-in-out;
+}
 
-.url-text { color:#ffccb3; }
+/* Text stays on top */
+.website-button span {
+    position: relative;
+    z-index: 1;
+}
 
-.mobile-text { display:inline; }
-.desktop-text { display:none; }
-.mobile-break { display:block; }
+/* Hover effect */
+.website-button:hover::before {
+    background-color: #880000;
+}
+
+.url-text { color: #ffccb3; }
+
+.mobile-text { display: inline; }
+.desktop-text { display: none; }
+.mobile-break { display: block; }
 
 @media(min-width:768px){
-    .app-container { max-width:500px; padding:40px 30px; }
-    .website-button { white-space:nowrap; }
-    .mobile-text { display:none; }
-    .desktop-text { display:inline; }
-    .mobile-break { display:none; }
+    .mobile-text { display: none; }
+    .desktop-text { display: inline; }
+    .mobile-break { display: none; }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
 }
 
 /* ===============================
