@@ -131,12 +131,16 @@ body {
     border: none; 
     border-left: 3px solid #A80000;
     border-right: 3px solid #A80000;
-    border-bottom: 3px solid #A80000; /* Removed bottom border from container to make it look clean without footer */
+    border-bottom: 3px solid #A80000; 
     border-top: none; 
     box-sizing: border-box;
-    margin-bottom: 20px; /* Reduced margin since footer is gone */
+    margin-bottom: 20px; 
     margin-top: 0; 
     z-index: 10;
+    
+    /* Important: for positioning the footer flush to bottom */
+    display: flex;
+    flex-direction: column;
 }
 
 /* --- New Bhajan Text Style --- */
@@ -154,9 +158,9 @@ body {
 .gsa-image-steps {
     display: flex;
     flex-direction: column;
-    gap: 15px; /* Spacing between steps */
+    gap: 15px; 
     margin-top: 20px;
-    margin-bottom: 30px; /* Marquee से पहले गैप */
+    margin-bottom: 30px; 
     padding: 0 5px; 
     width: 100%;
     box-sizing: border-box;
@@ -167,7 +171,7 @@ body {
     border-radius: 12px;
     overflow: hidden;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-    border: 3px solid #FF9933; /* Orange/Yellow border for highlight */
+    border: 3px solid #FF9933; 
     background-color: #fff;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -226,7 +230,7 @@ body {
 .icon-facebook { background: linear-gradient(45deg, #1877F2, #145DB0); }
 
 
-.website-button { display: inline-block; border: 3px solid #FF9933; background-color: #a80000; color: white; padding: 10px 20px; border-radius: 25px; text-decoration: none; font-size: 14px; font-weight: bold; margin-top: 10px; margin-bottom: 20px; position: relative; overflow: hidden; animation: pulse 1.2s infinite ease-in-out; text-align: center; }
+.website-button { display: inline-block; border: 3px solid #FF9933; background-color: #a80000; color: white; padding: 10px 20px; border-radius: 25px; text-decoration: none; font-size: 14px; font-weight: bold; margin-top: 10px; margin-bottom: 20px; position: relative; overflow: hidden; animation: pulse 1.2s infinite ease-in-out; text-align: center; align-self: center;}
 .url-text { color:#ffccb3; }
 .mobile-text { display:inline; }
 .desktop-text { display:none; }
@@ -235,30 +239,27 @@ body {
 
 
 /* ===============================
-    COW STRIP INSIDE CONTAINER FIX
-    =============================== */
-.cow-footer-image {
-    width: 100%; /* Take full width of the container */
-    margin-top: 10px; /* Space below the button */
-    margin-bottom: -40px; /* Move image down slightly to be near the border bottom */
-    position: relative;
+    COW STRIP INSIDE CONTAINER FIX (UPDATED)
+   =============================== */
+.gsa-cow-strip {
+    width: calc(100% + 40px); /* Compensate for parent padding (20px left + 20px right) */
+    margin-left: -20px;
+    margin-right: -20px;
+    margin-bottom: -20px; /* Pull it down to touch the border */
+    margin-top: 20px;
+    line-height: 0; /* Removes extra space below image */
     overflow: hidden;
+    /* Rounded corners at bottom to match container */
+    border-bottom-left-radius: 17px; 
+    border-bottom-right-radius: 17px;
 }
 
-.cow-footer-image img {
-    /* To show only a portion of the wide image */
-    width: 300%; /* Make the image wider than the container */
-    max-width: 300%;
+.gsa-cow-image {
+    width: 100%;
     height: auto;
     display: block;
-    /* Center the wide image so the middle portion is visible */
-    transform: translateX(-33%); 
     object-fit: cover;
 }
-
-
-
-
 
     
 /* Desktop Media Query */
@@ -268,7 +269,7 @@ body {
     .gsa-circles-section { max-width: 500px; }
     .app-container { 
         max-width:500px; 
-        padding:40px 30px; 
+        padding:40px 30px; /* Note: padding changed here */
         padding-top: 20px; 
         border-bottom: 3px solid #A80000; 
     }
@@ -276,6 +277,14 @@ body {
     .mobile-text { display:none; } 
     .desktop-text { display:inline; } 
     .mobile-break { display:none; }
+
+    /* Adjust Cow Strip for Desktop Padding */
+    .gsa-cow-strip {
+        width: calc(100% + 60px); /* 30px left + 30px right padding compensation */
+        margin-left: -30px;
+        margin-right: -30px;
+        margin-bottom: -40px; /* Match bottom padding of container */
+    }
 }
 
 </style>
@@ -316,38 +325,28 @@ body {
         ।। सेवा ।। ।। सम्मान ।। <br> ।। सुरक्षा ।।
     </div>
     
-    <!-- ********************************************** -->
-    <!-- नया स्टेप-बाय-स्टेप इमेज सेक्शन -->
-    <!-- ********************************************** -->
     <div class="gsa-image-steps">
         <div class="step-image-item">
-            <!-- 1. Intro/Objective -->
             <img src="res/pdf1.png"
                  onerror="this.src='https://placehold.co/500x300/F4D03F/A03B00?text=Step+1+Image'"
                  alt="पहला कदम छवि">
         </div>
         <div class="step-image-item">
-            <!-- 2. Structure/Points -->
             <img src="res/pdf2.png"
                  onerror="this.src='https://placehold.co/500x300/F4D03F/A03B00?text=Step+2+Image'"
                  alt="दूसरा कदम छवि">
         </div>
         <div class="step-image-item">
-            <!-- 3. Requests/Demands -->
             <img src="res/pdf3.png"
                  onerror="this.src='https://placehold.co/500x300/F4D03F/A03B00?text=Step+3+Image'"
                  alt="तीसरा कदम छवि">
         </div>
         <div class="step-image-item">
-            <!-- 4. Action Plan/Timeline -->
             <img src="res/pdf4.png"
                  onerror="this.src='https://placehold.co/500x300/F4D03F/A03B00?text=Step+4+Image'"
                  alt="चौथा कदम छवि">
         </div>
     </div>
-    <!-- ********************************************** -->
-
-
     <div class="marquee-container">
         <div class="marquee-track">
             <div class="marquee-item">
@@ -397,14 +396,11 @@ body {
         <span class="url-text">www.gausamman.cloud</span>
     </a>
 
-    <!-- Cow Footer Image और Footer Section -->
-<div class="gsa-cow-strip">
-    
-    <img src="res/cow3.png" 
-         onerror="this.src='https://placehold.co/360x70/808080/FFFFFF?text=Cow+Strip'"
-         alt="गो सम्मान आह्वान अभियान गाय" class="gsa-cow-image">
-    
-     </div>
+    <div class="gsa-cow-strip">
+        <img src="res/cow3.png" 
+             onerror="this.src='https://placehold.co/360x70/808080/FFFFFF?text=Cow+Strip'"
+             alt="गो सम्मान आह्वान अभियान गाय" class="gsa-cow-image">
+    </div>
 
 </div>
 
