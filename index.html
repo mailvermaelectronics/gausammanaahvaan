@@ -233,6 +233,62 @@ body {
 .mobile-break { display:block; }
 
 
+
+/* ===============================
+    COW STRIP INSIDE CONTAINER FIX
+    =============================== */
+.cow-footer-image {
+    width: 100%; /* Take full width of the container */
+    margin-top: 10px; /* Space below the button */
+    margin-bottom: -40px; /* Move image down slightly to be near the border bottom */
+    position: relative;
+    overflow: hidden;
+}
+
+.cow-footer-image img {
+    /* To show only a portion of the wide image */
+    width: 300%; /* Make the image wider than the container */
+    max-width: 300%;
+    height: auto;
+    display: block;
+    /* Center the wide image so the middle portion is visible */
+    transform: translateX(-33%); 
+    object-fit: cover;
+}
+
+
+/* Remove the previous outer cow strip CSS, as it is now inside */
+.bottom-cow-strip { display: none; }
+</style>
+</head>
+
+<body>
+
+<div class="app-container">
+
+    <div class="logo-container">
+        <div class="side-logo-left">
+            <img src="res/cow1.png"
+                    onerror="this.src='https://placehold.co/60x60/f9d97a/a80000?text=Cow+Logo+1'">
+        </div>
+
+        <div class="main-logo">
+            <img src="res/logo.png"
+                    onerror="this.src='https://placehold.co/80x80/a80000/ffffff?text=LOGO'">
+        </div>
+
+        <div class="side-logo-right">
+            <img src="res/cow2.png"
+                    onerror="this.src='https://placehold.co/60x60/f9d97a/a80000?text=Cow+Logo+2'">
+        </div>
+    </div>
+
+
+
+
+
+
+    
 /* Desktop Media Query */
 @media(min-width:768px){
     /* Preserve Original Max-Widths */
