@@ -115,7 +115,7 @@ body {
 
 
 /* ==================================================== */
-/* 3. MAIN APP CONTAINER (Modified from Original) */
+/* 3. MAIN APP CONTAINER */
 /* ==================================================== */
 .app-container {
     width: 100%;
@@ -131,10 +131,10 @@ body {
     border: none; 
     border-left: 3px solid #A80000;
     border-right: 3px solid #A80000;
-    border-bottom: 3px solid #A80000; 
+    border-bottom: 3px solid #A80000; /* Removed bottom border from container to make it look clean without footer */
     border-top: none; 
     box-sizing: border-box;
-    margin-bottom: 20px; 
+    margin-bottom: 20px; /* Reduced margin since footer is gone */
     margin-top: 0; 
     z-index: 10;
 }
@@ -145,7 +145,43 @@ body {
     font-weight: 800;
     color: #A80000;
     margin-bottom: 15px;
-    line-height: 1.5; /* Adjusted for better spacing */
+    line-height: 1.5;
+}
+
+/* ==================================================== */
+/* 4. STEP-BY-STEP IMAGES SECTION (NEW) */
+/* ==================================================== */
+.gsa-image-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Spacing between steps */
+    margin-top: 20px;
+    margin-bottom: 30px; /* Marquee से पहले गैप */
+    padding: 0 5px; 
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.step-image-item {
+    width: 100%;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    border: 3px solid #FF9933; /* Orange/Yellow border for highlight */
+    background-color: #fff;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.step-image-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+}
+
+.step-image-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
 }
 
 /* --- Marquee, Logos, Social Icons, Buttons --- */
@@ -155,71 +191,39 @@ body {
 .social-icons { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; margin-bottom: 40px; }
 .social-icons a { text-decoration: none; display: block; transition: transform 0.2s ease-in-out; justify-self: center; }
 
-/* --- SHARED ICON STYLES (New) --- */
-/* Unify size, add shadow, transition, and white text/icon color */
+/* --- SHARED ICON STYLES --- */
 .icon-wrapper, .connect-us { 
-    width: 55px; /* Unified size for all icons/buttons */
+    width: 55px;
     height: 55px; 
     border-radius: 50%;
     display: flex; 
     justify-content: center; 
     align-items: center; 
-    color: white; /* Make icon and text color white for contrast */
+    color: white; 
     font-size: 13px;
     font-weight: bold;
-    /* Added bright border */
     border: 2px solid #FF9933; 
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4); /* Stronger general shadow */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4); 
     transition: transform 0.2s ease;
 }
 
 .icon-wrapper:hover, .connect-us:hover {
-    transform: scale(1.08); /* Unified hover effect */
-    /* Hover effect: Increase shadow and border visibility */
+    transform: scale(1.08); 
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5); 
 }
-.icon-wrapper i { font-size: 30px; } /* Keep icon size */
+.icon-wrapper i { font-size: 30px; } 
 
 
-/* --- INDIVIDUAL ICON STYLES (New Gradients) --- */
-.icon-apple { 
-    background: linear-gradient(45deg, #9E9E9E, #5D5D5D); 
-    /* box-shadow: 0 4px 10px rgba(93, 93, 93, 0.4); Removed individual shadows for shared shadow */
-}
-.icon-whatsapp { 
-    background: linear-gradient(45deg, #25D366, #1DA851); 
-    /* box-shadow: 0 4px 10px rgba(37, 211, 102, 0.5); Removed individual shadows for shared shadow */
-}
-.icon-youtube { 
-    background: linear-gradient(45deg, #FF0000, #C40000); 
-    /* box-shadow: 0 4px 10px rgba(255, 0, 0, 0.5); Removed individual shadows for shared shadow */
-}
-.icon-spotify { 
-    background: linear-gradient(45deg, #1DB954, #158F40); 
-    /* box-shadow: 0 4px 10px rgba(29, 185, 84, 0.5); Removed individual shadows for shared shadow */
-}
-.connect-us { 
-    /* Join Us gradient (retained but size unified) */
-    background: linear-gradient(135deg, #FF9933 0%, #A80000 100%); 
-    /* box-shadow: 0 4px 10px rgba(168, 0, 0, 0.5); Removed individual shadows for shared shadow */
-}
-.icon-mail { 
-    background: linear-gradient(45deg, #A80000, #7A0000); 
-    /* box-shadow: 0 4px 10px rgba(168, 0, 0, 0.5); Removed individual shadows for shared shadow */
-}
-.icon-twitter { 
-    background: linear-gradient(45deg, #1D9BF0, #000000); 
-    /* box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); Removed individual shadows for shared shadow */
-}
-.icon-instagram { 
-    /* Classic Instagram Gradient */
-    background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #405de6 90%); 
-    /* box-shadow: 0 4px 10px rgba(193, 53, 132, 0.5); Removed individual shadows for shared shadow */
-}
-.icon-facebook { 
-    background: linear-gradient(45deg, #1877F2, #145DB0); 
-    /* box-shadow: 0 4px 10px rgba(24, 119, 242, 0.5); Removed individual shadows for shared shadow */
-}
+/* --- INDIVIDUAL ICON STYLES --- */
+.icon-apple { background: linear-gradient(45deg, #9E9E9E, #5D5D5D); }
+.icon-whatsapp { background: linear-gradient(45deg, #25D366, #1DA851); }
+.icon-youtube { background: linear-gradient(45deg, #FF0000, #C40000); }
+.icon-spotify { background: linear-gradient(45deg, #1DB954, #158F40); }
+.connect-us { background: linear-gradient(135deg, #FF9933 0%, #A80000 100%); }
+.icon-mail { background: linear-gradient(45deg, #A80000, #7A0000); }
+.icon-twitter { background: linear-gradient(45deg, #1D9BF0, #000000); }
+.icon-instagram { background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #405de6 90%); }
+.icon-facebook { background: linear-gradient(45deg, #1877F2, #145DB0); }
 
 
 .website-button { display: inline-block; border: 3px solid #FF9933; background-color: #a80000; color: white; padding: 10px 20px; border-radius: 25px; text-decoration: none; font-size: 14px; font-weight: bold; margin-top: 10px; margin-bottom: 20px; position: relative; overflow: hidden; animation: pulse 1.2s infinite ease-in-out; text-align: center; }
@@ -227,8 +231,6 @@ body {
 .mobile-text { display:inline; }
 .desktop-text { display:none; }
 .mobile-break { display:block; }
-.cow-footer-image { width: 100%; margin-top: 10px; margin-bottom: 0; position: relative; overflow: hidden; border-radius: 0 0 20px 20px; }
-.cow-footer-image img { width: 100%; max-width: 100%; height: auto; display: block; transform: none; object-fit: cover; }
 
 
 /* Desktop Media Query */
@@ -286,6 +288,38 @@ body {
         ।। सेवा ।। ।। सम्मान ।। <br> ।। सुरक्षा ।।
     </div>
     
+    <!-- ********************************************** -->
+    <!-- नया स्टेप-बाय-स्टेप इमेज सेक्शन -->
+    <!-- ********************************************** -->
+    <div class="gsa-image-steps">
+        <div class="step-image-item">
+            <!-- 1. Intro/Objective -->
+            <img src="res/pdf1.png"
+                 onerror="this.src='https://placehold.co/500x300/F4D03F/A03B00?text=Step+1+Image'"
+                 alt="पहला कदम छवि">
+        </div>
+        <div class="step-image-item">
+            <!-- 2. Structure/Points -->
+            <img src="res/pdf2.png"
+                 onerror="this.src='https://placehold.co/500x300/F4D03F/A03B00?text=Step+2+Image'"
+                 alt="दूसरा कदम छवि">
+        </div>
+        <div class="step-image-item">
+            <!-- 3. Requests/Demands -->
+            <img src="res/pdf3.png"
+                 onerror="this.src='https://placehold.co/500x300/F4D03F/A03B00?text=Step+3+Image'"
+                 alt="तीसरा कदम छवि">
+        </div>
+        <div class="step-image-item">
+            <!-- 4. Action Plan/Timeline -->
+            <img src="res/pdf4.png"
+                 onerror="this.src='https://placehold.co/500x300/F4D03F/A03B00?text=Step+4+Image'"
+                 alt="चौथा कदम छवि">
+        </div>
+    </div>
+    <!-- ********************************************** -->
+
+
     <div class="marquee-container">
         <div class="marquee-track">
             <div class="marquee-item">
@@ -335,14 +369,9 @@ body {
         <span class="url-text">www.gausamman.cloud</span>
     </a>
 
-    <div class="cow-footer-image">
-        <img src="res/cow3.png" 
-             alt="गो सम्मान आह्वान अभियान"
-             onerror="this.src='https://placehold.co/1500x120/f0f0f0/888888?text=Cow+Strip+Image'">
-    </div>
+    <!-- Cow Footer Image और Footer Section हटा दिए गए हैं -->
 
 </div>
 
 </body>
 </html>
-
